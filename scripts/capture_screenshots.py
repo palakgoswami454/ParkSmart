@@ -36,7 +36,10 @@ def main():
             # wait until Streamlit has finished running the script
             page.wait_for_function("() => !document.querySelector('[data-testid=\"stStatusWidget\"]')", timeout=120000)
             page.wait_for_timeout(2500)
-            page.screenshot(path=str(OUT / f"{name}.png"), full_page=True)
+            box = page.locator("[data-testid='stMainBlockContainer']").bounding_box()
+            height = int(min(page.viewport_size["height"], box["y"] + box["height"] + 30))
+            page.screenshot(path=str(OUT / f"{name}.png"),
+                            clip={"x": 0, "y": 0, "width": page.viewport_size["width"], "height": height})
             print("saved", OUT / f"{name}.png")
         browser.close()
 
