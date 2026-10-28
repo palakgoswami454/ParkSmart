@@ -1,0 +1,45 @@
+{
+  "_about": "Dated Pune parking policy and news items shown on the City Insights page. 'status' says whether the item is in force, proposed or historical as of the source date; none of it is a live condition.",
+  "items": [
+    {"date": "2016-03", "title": "PMC Public Parking Policy", "status": "Adopted policy (2016)", "source": "pmc-policy-2016",
+     "summary": "Divides the city into Zone A (central business district), Zone B (mobility corridors) and Zone C (rest of city). Charges should rise every hour, on-street parking should cost more than off-street, no parking within 50 m of major intersections, and 1 in 20 car spaces reserved free for persons with disabilities. At the time 'most of the roads in Pune' had free on-street parking."},
+    {"date": "2022-10", "title": "Pune Airport multi-level car park", "status": "Reported opening", "source": "airport-mlcp",
+     "summary": "Multi-level parking in front of the airport for 1,000 cars and 1,000 two-wheelers, with app pre-booking, reported to open on 1 October 2022."},
+    {"date": "2024-02", "title": "Pune Metro announces parking at 9 stations", "status": "Announced", "source": "metro-rel-rw",
+     "summary": "PCMC, Sant Tukaram Nagar, Phugewadi, Bopodi, Shivajinagar, Civil Court, Swargate, Ideal Colony and Mangalwar Peth/RTO. Two-wheelers ₹15/30/60 and cars ₹35/50/80 for up to 2 h / 2–6 h / over 6 h; 25% off with a same-day metro ticket."},
+    {"date": "2024-12", "title": "PMC plans ₹5 crore for metro-station parking", "status": "Planning", "source": "metro-pmc-plan",
+     "summary": "Reports that most stations lack designated parking, Swargate bus-stand parking is restricted to bus travellers, and the four Swargate–Katraj stations have no parking plans. PMC is surveying amenity spaces for parking."},
+    {"date": "2025-07", "title": "Central Railway pay-and-park contracts at Pune station", "status": "Official register", "source": "cr-paypark",
+     "summary": "Three two- and four-wheeler sites at Pune station (Main Gate, TDRD, RR Lucky Parking) with contracts running to Sep–Dec 2025."},
+    {"date": "2025-09", "title": "No metro parking in the PCMC area", "status": "Reported decision", "source": "metro-pcmc-none",
+     "summary": "Pune Metro is reported as saying there is no parking beneath PCMC station and that parking will not be provided in the PCMC area; commuters are asked to use public transport."},
+    {"date": "2026-03", "title": "On-street pay-and-park pilot: tender re-issued", "status": "Tender stage", "source": "pmc-pilot-2026",
+     "summary": "Pilot on FC Road, JM Road, Laxmi Road, Viman Nagar, Balewadi High Street and Bibvewadi. Proposed rates ₹4/h for two-wheelers and ₹20/h for cars. The earlier tender attracted too few bidders."},
+    {"date": "2026-06", "title": "Airport terminal 15-minute limit", "status": "In force (reported)", "source": "airport-15min",
+     "summary": "Private vehicles may stay at most 15 minutes in the terminal area, recorded electronically; ₹500 fine beyond that."},
+    {"date": "2026-06", "title": "Multi-level parking under BOT", "status": "Proposal", "source": "mlp-bot",
+     "summary": "The non-operational Chhatrapati Sambhaji Maharaj multi-level parking may be rebuilt; more parking explored near Mandai, Narayan Peth and Sambhaji Udyan. Awaiting Standing Committee."},
+    {"date": "2026-07", "title": "Cantonment Board raises Camp parking rates by 50%", "status": "In force (reported)", "source": "pcb-camp",
+     "summary": "Two-wheelers ₹8 up to 4 h / ₹15 per day, three-wheelers ₹15 / ₹23, cars ₹30 / ₹60 at MG Road, Fashion Street and other Camp lots. Overcharging complaints reported."},
+    {"date": "2026-09", "title": "PMC proposes zone-based off-street rates", "status": "Proposed (not approved)", "source": "pmc-zones-2026",
+     "summary": "Zone A: two-wheelers ₹15/h (now ₹1), cars ₹30/h (now ₹7). Zone B: two-wheelers ₹10/h (now ₹2), cars ₹20/h (now ₹10). Needs Standing Committee and General Body approval."}
+  ],
+  "zone_rates_2016": {
+    "source": "pmc-policy-2016",
+    "columns": ["Vehicle", "Zone A on-street", "Zone A off-street", "Zone B on-street", "Zone B off-street", "Zone C on-street", "Zone C off-street"],
+    "rows": [["Two-wheeler", 15, 10, 10, 5, 5, 3], ["Car", 60, 30, 40, 20, 20, 10]],
+    "unit": "₹ per hour (base rates in the 2016 policy)"
+  },
+  "zone_rates_2026_proposed": {
+    "source": "pmc-zones-2026",
+    "columns": ["Zone", "Two-wheeler now", "Two-wheeler proposed", "Car now", "Car proposed"],
+    "rows": [["Zone A (central)", 1, 15, 7, 30], ["Zone B (rest)", 2, 10, 10, 20]],
+    "unit": "₹ per hour, off-street (proposal, Sep 2026)"
+  },
+  "searched_but_not_found": [
+    "Historical or live occupancy counts for any Pune car park (searched PMC open data, data.gov.in, OpenCity, Kaggle/GitHub listings, news). The data.gov.in catalog 'Parking lots: Pune' exists but blocks automated access, so its contents could not be checked.",
+    "Official PMC list of its off-street parking lots with capacities.",
+    "Current Pune Railway Station parking tariffs and the arrangement after the 2025 contracts ended.",
+    "Confirmation that the nine metro-station parking lots announced in Feb 2024 actually opened."
+  ]
+}

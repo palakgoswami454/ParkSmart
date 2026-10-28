@@ -1,0 +1,159 @@
+{
+  "_about": "Pune parking facility directory for ParkSmart. Only facts found in the listed sources are recorded; null means the sources do not say. Coordinates are the location of the station/landmark/listing given in the coordinate source, not a surveyed parking entrance. No entry contains occupancy or live availability, because no public Pune occupancy feed was found.",
+  "last_checked": "2026-10-29",
+  "facilities": [
+    {
+      "id": "metro-pcmc", "name": "PCMC Bhavan metro station parking", "locality": "Pimpri", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "conflicting", "status_note": "Listed in Pune Metro's Feb 2024 parking announcement, but a Sep 2025 report quotes Pune Metro saying there is no parking beneath the PCMC station and none will be provided in the PCMC area.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Morewadi, Pimpri Colony, Pimpri Chinchwad 411018", "lat": 18.6294, "lon": 73.8033, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-pcmc",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "metro-pcmc-none", "wp-pcmc"]
+    },
+    {
+      "id": "metro-stn", "name": "Sant Tukaram Nagar metro station parking", "locality": "Pimpri", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024 ('will be open to the public very soon'). No later confirmation of opening was found; a Sep 2025 report says parking will not be provided in the PCMC area.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Old Mumbai–Pune Hwy, Vallabh Nagar, Pimpri 411018", "lat": 18.6146, "lon": 73.8158, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-stn",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "metro-pcmc-none", "wp-stn"]
+    },
+    {
+      "id": "metro-phugewadi", "name": "Phugewadi metro station parking", "locality": "Dapodi", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024. No later confirmation of opening was found.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Old Mumbai–Pune Hwy, Seva Nagar, Dapodi 411012", "lat": 18.5912, "lon": 73.8312, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-phugewadi",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-phugewadi"]
+    },
+    {
+      "id": "metro-bopodi", "name": "Bopodi metro station parking", "locality": "Bopodi", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024. No later confirmation of opening was found.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Old Mumbai–Pune Hwy, Bopodi 411003", "lat": 18.56974, "lon": 73.83813, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-bopodi",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-bopodi"]
+    },
+    {
+      "id": "metro-shivajinagar", "name": "Shivajinagar metro station parking", "locality": "Shivajinagar", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024. No later confirmation of opening was found.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Shivajinagar, Pune 411001", "lat": 18.53269, "lon": 73.84955, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-shivajinagar-metro",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-shivajinagar-metro"]
+    },
+    {
+      "id": "metro-districtcourt", "name": "District Court (Civil Court) metro station parking", "locality": "Shivajinagar", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024 under the station's former name, Civil Court. No later confirmation of opening was found.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Shivajinagar, Pune 411001", "lat": 18.52689, "lon": 73.85802, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-districtcourt",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-districtcourt"]
+    },
+    {
+      "id": "metro-swargate", "name": "Swargate metro station parking", "locality": "Swargate", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "conflicting", "status_note": "Announced by Pune Metro in Feb 2024, but a Dec 2024 report says metro users at Swargate have to park on crowded streets because the bus-stand parking is restricted to bus travellers.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Swargate, Pune 411030", "lat": 18.49959, "lon": 73.85781, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-swargate-metro",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "metro-pmc-plan", "wp-swargate-metro"]
+    },
+    {
+      "id": "metro-idealcolony", "name": "Ideal Colony metro station parking", "locality": "Kothrud", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024. No later confirmation of opening was found. Wikipedia notes the station was renamed in December 2025.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": null, "lat": null, "lon": null, "coord_precision": "No verified coordinates found", "coord_source": null,
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-idealcolony"]
+    },
+    {
+      "id": "metro-mangalwar", "name": "Mangalwar Peth (RTO) metro station parking", "locality": "Sangamvadi", "facility_type": "metro", "operator": "Agency appointed by Pune Metro (not named)",
+      "status": "announced", "status_note": "Announced by Pune Metro in Feb 2024 as 'Mangalwar Peth/RTO'. No later confirmation of opening was found.",
+      "vehicle_types": ["cycle", "two_wheeler", "car"], "capacity": null, "tariff_id": "metro-2024", "hours": "During metro operating hours (hours not stated)",
+      "address": "Sangamvadi, Pune 411001", "lat": 18.53001, "lon": 73.86521, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-mangalwar",
+      "sources": ["metro-rel-rw", "metro-rel-pn", "wp-mangalwar"]
+    },
+    {
+      "id": "metro-kalyaninagar", "name": "Kalyani Nagar metro station two-wheeler parking", "locality": "Kalyani Nagar", "facility_type": "metro", "operator": null,
+      "status": "reported", "status_note": "Wikipedia lists two-wheeler parking at the South Exit (towards Koregaon Park) and four-wheeler parking 'at request' at a nearby retail store. Not confirmed by Pune Metro.",
+      "vehicle_types": ["two_wheeler"], "capacity": null, "tariff_id": null, "hours": null,
+      "address": "Kalyani Nagar, Pune 411006 (South Exit)", "lat": 18.544367, "lon": 73.905732, "coord_precision": "Station location (parking position not published)", "coord_source": "wp-kalyaninagar",
+      "sources": ["wp-kalyaninagar"]
+    },
+    {
+      "id": "rail-pune", "name": "Pune Railway Station pay-and-park", "locality": "Pune Station", "facility_type": "railway", "operator": "Licensees K. Padmaja and Lucky Parking (Central Railway contracts)",
+      "status": "lapsed", "status_note": "Central Railway's register (15 Jul 2025) lists three sites for two- and four-wheelers: Main Gate (3,125 m², contract to 27 Sep 2025), TDRD (2,346 m², to 27 Dec 2025) and RR Lucky Parking (4,000 m², to 14 Nov 2025). All three contract periods have ended; the current arrangement was not verified.",
+      "vehicle_types": ["two_wheeler", "car"], "capacity": null, "tariff_id": null, "hours": null,
+      "address": "HH Prince Aga Khan Road, Agarkar Nagar, Pune", "lat": 18.5289, "lon": 73.8743, "coord_precision": "Station location (three sites around the station)", "coord_source": "wp-punejn",
+      "sources": ["cr-paypark", "wp-punejn"]
+    },
+    {
+      "id": "airport-mlcp", "name": "Pune Airport multi-level car park", "locality": "Lohegaon", "facility_type": "airport", "operator": "Airports Authority of India (built by AAI)",
+      "status": "reported", "status_note": "Reported to open on 1 Oct 2022 in front of the airport, with app pre-booking. Since Jun 2026, private vehicles may stay only 15 minutes in the terminal area (₹500 fine), which does not apply to the car park.",
+      "vehicle_types": ["two_wheeler", "car"], "capacity": {"car": 1000, "two_wheeler": 1000}, "tariff_id": null, "hours": null,
+      "address": "In front of Pune Airport terminal, Lohegaon", "lat": 18.58222, "lon": 73.91972, "coord_precision": "Airport location", "coord_source": "wp-airport",
+      "sources": ["airport-mlcp", "airport-aai", "airport-15min", "wp-airport"]
+    },
+    {
+      "id": "bus-swargate", "name": "Swargate bus station parking", "locality": "Swargate", "facility_type": "bus", "operator": "MSRTC / PMPML bus station",
+      "status": "restricted", "status_note": "Wikipedia lists parking at the bus station; a Dec 2024 report says the space is restricted to bus travellers.",
+      "vehicle_types": [], "capacity": null, "tariff_id": null, "hours": null,
+      "address": "Jedhe Chowk, Satara Road, Swargate", "lat": 18.4990444, "lon": 73.8582722, "coord_precision": "Bus station location", "coord_source": "wp-swargate-bus",
+      "sources": ["wp-swargate-bus", "metro-pmc-plan"]
+    },
+    {
+      "id": "pmc-sane", "name": "PMC Haribhau Sane Parking Lot", "locality": "Narayan Peth", "facility_type": "municipal", "operator": null,
+      "status": "listing", "status_note": "Appears in a third-party business directory with a 'PMC' prefix. Not confirmed by any PMC document found.",
+      "vehicle_types": [], "capacity": null, "tariff_id": null, "hours": null,
+      "address": "Near Modi Ganpati, 346 Tatyasaheb Karandikar Rd, Narayan Peth, Pune 411030", "lat": 18.5149167, "lon": 73.8482711, "coord_precision": "Coordinates from the directory listing", "coord_source": "dir-sane",
+      "sources": ["dir-sane"]
+    },
+    {
+      "id": "pmc-babugenu", "name": "Hutatma Babu Genu Mandai Parking", "locality": "Mandai", "facility_type": "municipal", "operator": null,
+      "status": "listing", "status_note": "Appears in a third-party parking directory. Not confirmed by any PMC document found. A Jun 2026 report says PMC is exploring more parking near Mandai.",
+      "vehicle_types": [], "capacity": null, "tariff_id": null, "hours": null,
+      "address": "Phatakwada Society, Mandai, Shukrawar Peth, Pune 411002", "lat": 18.511762, "lon": 73.855859, "coord_precision": "Decoded from the plus code GV64+P85 given in the listing", "coord_source": "dir-babugenu",
+      "sources": ["dir-babugenu", "mlp-bot"]
+    },
+    {
+      "id": "pmc-sambhaji-mlp", "name": "Chhatrapati Sambhaji Maharaj multi-level parking", "locality": "Not stated in source", "facility_type": "municipal", "operator": "Pune Municipal Corporation",
+      "status": "closed", "status_note": "A Jun 2026 report describes the structure as 'currently non-operational' and likely to be demolished and rebuilt under a BOT model (proposal stage).",
+      "vehicle_types": [], "capacity": null, "tariff_id": null, "hours": null,
+      "address": null, "lat": null, "lon": null, "coord_precision": "No verified coordinates found", "coord_source": null,
+      "sources": ["mlp-bot"]
+    },
+    {
+      "id": "pcb-mgroad", "name": "Cantonment Board pay-and-park, MG Road", "locality": "Camp", "facility_type": "cantonment", "operator": "Pune Cantonment Board (contractor: SGD Sai Group Developers)",
+      "status": "reported", "status_note": "Rates confirmed by the Pune Cantonment Board CEO in Jul 2026 after a 50% increase. Commuters reported being overcharged, so check the official rate board.",
+      "vehicle_types": ["two_wheeler", "three_wheeler", "car"], "capacity": null, "tariff_id": "pcb-2026", "hours": null,
+      "address": "MG Road, Camp, Pune (several lots)", "lat": null, "lon": null, "coord_precision": "No verified coordinates found", "coord_source": null,
+      "sources": ["pcb-camp"]
+    },
+    {
+      "id": "pcb-fashionstreet", "name": "Cantonment Board pay-and-park, Fashion Street", "locality": "Camp", "facility_type": "cantonment", "operator": "Pune Cantonment Board (contractor: SGD Sai Group Developers)",
+      "status": "reported", "status_note": "Rates confirmed by the Pune Cantonment Board CEO in Jul 2026. Commuters said a QR payment scanner partly covers the rate board.",
+      "vehicle_types": ["two_wheeler", "three_wheeler", "car"], "capacity": null, "tariff_id": "pcb-2026", "hours": null,
+      "address": "Fashion Street, Camp, Pune", "lat": null, "lon": null, "coord_precision": "No verified coordinates found", "coord_source": null,
+      "sources": ["pcb-camp"]
+    },
+    {
+      "id": "mall-phoenix", "name": "Phoenix Marketcity mall parking", "locality": "Viman Nagar", "facility_type": "mall", "operator": "Private (mall)",
+      "status": "private", "status_note": "Wikipedia's infobox lists 2,500+ parking spaces. Charges, hours and vehicle split are not published in the sources found.",
+      "vehicle_types": [], "capacity": {"total": 2500, "is_lower_bound": true}, "tariff_id": null, "hours": null,
+      "address": "Viman Nagar, Pune", "lat": 18.5621, "lon": 73.9167, "coord_precision": "Mall location", "coord_source": "wp-phoenix",
+      "sources": ["wp-phoenix"]
+    }
+  ],
+  "tariffs": {
+    "metro-2024": {
+      "label": "Pune Metro station parking (announced Feb 2024, incl. GST)", "as_of": "2024-02-15", "source": "metro-rel-rw",
+      "bands": {
+        "cycle": [[2, 2], [6, 5], [null, 10]],
+        "two_wheeler": [[2, 15], [6, 30], [null, 60]],
+        "car": [[2, 35], [6, 50], [null, 80]]
+      },
+      "notes": "Bands are 'up to 2 h', '2–6 h' and 'more than 6 h'. 25% off with a same-day metro ticket from/to that station. Helmet storage ₹5 per 24 h."
+    },
+    "pcb-2026": {
+      "label": "Pune Cantonment Board pay-and-park (Jul 2026)", "as_of": "2026-07-30", "source": "pcb-camp",
+      "bands": {
+        "two_wheeler": [[4, 8], [24, 15]],
+        "three_wheeler": [[4, 15], [24, 23]],
+        "car": [[4, 30], [24, 60]]
+      },
+      "notes": "Bands are 'up to 4 hours' and 'full day'."
+    }
+  }
+}

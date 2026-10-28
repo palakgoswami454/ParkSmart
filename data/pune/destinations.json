@@ -1,0 +1,192 @@
+{
+  "_about": "Destinations a driver can choose in Find Parking. Each point is a landmark or station whose coordinates were read from the cited Wikipedia article. Locality articles whose coordinates were clearly wrong when checked against nearby stations (Kothrud, Aundh, Pune Camp) were not used; a nearby station is used instead where noted. Camp has no verified point, so it is matched to facilities by locality name only.",
+  "destinations": [
+    {
+      "id": "fc-road",
+      "name": "FC Road (Fergusson College)",
+      "lat": 18.523969,
+      "lon": 73.839219,
+      "source": "wp-fergusson",
+      "aliases": [
+        "fergusson college road",
+        "fc road",
+        "fergusson"
+      ]
+    },
+    {
+      "id": "jm-road",
+      "name": "JM Road / Deccan (Deccan Gymkhana metro)",
+      "lat": 18.51631,
+      "lon": 73.84447,
+      "source": "wp-deccan-metro",
+      "aliases": [
+        "jm road",
+        "jangli maharaj road",
+        "deccan"
+      ]
+    },
+    {
+      "id": "deccan",
+      "name": "Deccan Gymkhana",
+      "lat": 18.5184,
+      "lon": 73.8406,
+      "source": "wp-deccan",
+      "aliases": [
+        "deccan gymkhana"
+      ]
+    },
+    {
+      "id": "shivajinagar",
+      "name": "Shivajinagar",
+      "lat": 18.53139,
+      "lon": 73.84444,
+      "source": "wp-shivajinagar",
+      "aliases": [
+        "shivaji nagar"
+      ]
+    },
+    {
+      "id": "laxmi-road",
+      "name": "Laxmi Road / Mandai (Mahatma Phule Mandai metro)",
+      "lat": 18.51302,
+      "lon": 73.85689,
+      "source": "wp-mandai-metro",
+      "aliases": [
+        "laxmi road",
+        "mandai",
+        "tulsi baug",
+        "dagdusheth",
+        "shaniwar wada",
+        "old city",
+        "peth"
+      ]
+    },
+    {
+      "id": "pune-station",
+      "name": "Pune Railway Station",
+      "lat": 18.5289,
+      "lon": 73.8743,
+      "source": "wp-punejn",
+      "aliases": [
+        "pune junction",
+        "railway station",
+        "station"
+      ]
+    },
+    {
+      "id": "swargate",
+      "name": "Swargate",
+      "lat": 18.4990444,
+      "lon": 73.8582722,
+      "source": "wp-swargate-bus",
+      "aliases": [
+        "swargate bus stand"
+      ]
+    },
+    {
+      "id": "viman-nagar",
+      "name": "Viman Nagar (Phoenix Marketcity)",
+      "lat": 18.5621,
+      "lon": 73.9167,
+      "source": "wp-phoenix",
+      "aliases": [
+        "viman nagar",
+        "vimannagar",
+        "phoenix"
+      ]
+    },
+    {
+      "id": "kalyani-nagar",
+      "name": "Kalyani Nagar (metro station)",
+      "lat": 18.544367,
+      "lon": 73.905732,
+      "source": "wp-kalyaninagar",
+      "aliases": [
+        "kalyani nagar",
+        "koregaon park"
+      ]
+    },
+    {
+      "id": "kothrud",
+      "name": "Kothrud (Anand Nagar metro)",
+      "lat": 18.50963,
+      "lon": 73.81408,
+      "source": "wp-anandnagar",
+      "aliases": [
+        "kothrud",
+        "anand nagar",
+        "paud road"
+      ]
+    },
+    {
+      "id": "baner",
+      "name": "Baner",
+      "lat": 18.56,
+      "lon": 73.79028,
+      "source": "wp-baner",
+      "aliases": [
+        "baner",
+        "balewadi"
+      ]
+    },
+    {
+      "id": "hinjawadi",
+      "name": "Hinjawadi",
+      "lat": 18.594596,
+      "lon": 73.718519,
+      "source": "wp-hinjawadi",
+      "aliases": [
+        "hinjewadi",
+        "it park",
+        "rajiv gandhi infotech park"
+      ]
+    },
+    {
+      "id": "wakad",
+      "name": "Wakad",
+      "lat": 18.5993361,
+      "lon": 73.7624944,
+      "source": "wp-wakad",
+      "aliases": [
+        "wakad"
+      ]
+    },
+    {
+      "id": "airport",
+      "name": "Pune Airport",
+      "lat": 18.58222,
+      "lon": 73.91972,
+      "source": "wp-airport",
+      "aliases": [
+        "airport",
+        "lohegaon"
+      ]
+    },
+    {
+      "id": "pimpri",
+      "name": "Pimpri (PCMC Bhavan metro)",
+      "lat": 18.6294,
+      "lon": 73.8033,
+      "source": "wp-pcmc",
+      "aliases": [
+        "pimpri",
+        "pcmc",
+        "pimpri chinchwad"
+      ]
+    },
+    {
+      "id": "camp",
+      "name": "Camp (MG Road / Fashion Street)",
+      "lat": null,
+      "lon": null,
+      "source": "pcb-camp",
+      "aliases": [
+        "camp",
+        "mg road",
+        "fashion street",
+        "cantonment"
+      ],
+      "note": "No verified coordinates; matched by locality name only."
+    }
+  ]
+}
