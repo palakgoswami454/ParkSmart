@@ -1,0 +1,2312 @@
+{
+  "60": {
+    "horizon_minutes": 60,
+    "rows": {
+      "train": 19912,
+      "val": 5080,
+      "test": 5739
+    },
+    "date_ranges": {
+      "train": [
+        "2016-10-04",
+        "2016-11-21"
+      ],
+      "val": [
+        "2016-11-22",
+        "2016-12-05"
+      ],
+      "test": [
+        "2016-12-06",
+        "2016-12-19"
+      ]
+    },
+    "walk_forward_folds": [
+      [
+        "2016-11-06",
+        "2016-11-12"
+      ],
+      [
+        "2016-11-13",
+        "2016-11-19"
+      ],
+      [
+        "2016-11-20",
+        "2016-11-26"
+      ],
+      [
+        "2016-11-27",
+        "2016-12-05"
+      ]
+    ],
+    "regression": {
+      "Persistence (baseline)": {
+        "why": "Naive 'nothing changes' forecast; any useful model must beat it.",
+        "best_params": {},
+        "validation_MAE": 0.07355,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.07355,
+            "fit_seconds": 0.0
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.06451407436262271,
+            "RMSE": 0.09370951568850791
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.0653237714831932,
+            "RMSE": 0.093162635621466
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.07144024906380768,
+            "RMSE": 0.10190821783237451
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.07466259537261782,
+            "RMSE": 0.10506766665726308
+          }
+        ],
+        "walk_forward_MAE_mean": 0.06899,
+        "walk_forward_MAE_std": 0.00423,
+        "walk_forward_RMSE_mean": 0.09846,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.006,
+        "total_seconds": 0.0
+      },
+      "Historical profile (baseline)": {
+        "why": "Average occupancy for this car park, weekday and time - what static 'busy times' charts show.",
+        "best_params": {},
+        "validation_MAE": 0.07597,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.07597,
+            "fit_seconds": 0.01
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.05051787820278011,
+            "RMSE": 0.08238152530781524
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.05862031012117257,
+            "RMSE": 0.08553178923619727
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.08023670253416545,
+            "RMSE": 0.11761066778695038
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.07074053336807418,
+            "RMSE": 0.09610218702939098
+          }
+        ],
+        "walk_forward_MAE_mean": 0.06503,
+        "walk_forward_MAE_std": 0.01135,
+        "walk_forward_RMSE_mean": 0.09541,
+        "final_fit_seconds": 0.01,
+        "predict_ms_per_1000_rows": 0.253,
+        "total_seconds": 0.1
+      },
+      "Persistence + weekly shape (baseline)": {
+        "why": "Current occupancy plus last week's change over the same interval; a strong hand-crafted rule.",
+        "best_params": {},
+        "validation_MAE": 0.02468,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.02468,
+            "fit_seconds": 0.0
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.021082219367949743,
+            "RMSE": 0.04044461490485538
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.019447632572385003,
+            "RMSE": 0.030622941379485166
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.02434221440669265,
+            "RMSE": 0.04063742416719266
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.025450192865816408,
+            "RMSE": 0.042305860608790456
+          }
+        ],
+        "walk_forward_MAE_mean": 0.02258,
+        "walk_forward_MAE_std": 0.00242,
+        "walk_forward_RMSE_mean": 0.0385,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.022,
+        "total_seconds": 0.0
+      },
+      "Ridge Regression": {
+        "why": "Interpretable linear model; tests whether a linear combination of lags and time explains the target.",
+        "best_params": {
+          "model__alpha": 0.1
+        },
+        "validation_MAE": 0.02683,
+        "tuning_log": [
+          {
+            "params": {
+              "model__alpha": 0.1
+            },
+            "score": 0.02683,
+            "fit_seconds": 0.07
+          },
+          {
+            "params": {
+              "model__alpha": 1.0
+            },
+            "score": 0.02684,
+            "fit_seconds": 0.05
+          },
+          {
+            "params": {
+              "model__alpha": 10.0
+            },
+            "score": 0.02688,
+            "fit_seconds": 0.06
+          },
+          {
+            "params": {
+              "model__alpha": 100.0
+            },
+            "score": 0.0273,
+            "fit_seconds": 0.07
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.026763929049288333,
+            "RMSE": 0.04406638553839759
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.02376928437004621,
+            "RMSE": 0.034640824408810604
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.027515329295467714,
+            "RMSE": 0.041886306661048096
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.027439497009780087,
+            "RMSE": 0.04241599960132917
+          }
+        ],
+        "walk_forward_MAE_mean": 0.02637,
+        "walk_forward_MAE_std": 0.00153,
+        "walk_forward_RMSE_mean": 0.04075,
+        "final_fit_seconds": 0.05,
+        "predict_ms_per_1000_rows": 1.383,
+        "total_seconds": 0.6
+      },
+      "Random Forest": {
+        "why": "Non-linear bagged trees; captures interactions (e.g. park x time) and is robust to outliers.",
+        "best_params": {
+          "model__max_depth": "None",
+          "model__max_features": 1.0,
+          "model__min_samples_leaf": 1
+        },
+        "validation_MAE": 0.02269,
+        "tuning_log": [
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.02423,
+            "fit_seconds": 5.54
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.02421,
+            "fit_seconds": 5.7
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02519,
+            "fit_seconds": 5.64
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.02401,
+            "fit_seconds": 12.33
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.02386,
+            "fit_seconds": 10.9
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02488,
+            "fit_seconds": 11.65
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.02278,
+            "fit_seconds": 10.3
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.0231,
+            "fit_seconds": 7.38
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02489,
+            "fit_seconds": 5.43
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.0227,
+            "fit_seconds": 17.48
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.02298,
+            "fit_seconds": 13.05
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02474,
+            "fit_seconds": 10.22
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.02275,
+            "fit_seconds": 9.44
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.02308,
+            "fit_seconds": 6.69
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02489,
+            "fit_seconds": 5.81
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.02269,
+            "fit_seconds": 16.43
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.02298,
+            "fit_seconds": 12.28
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.02474,
+            "fit_seconds": 10.01
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.022168425809873618,
+            "RMSE": 0.03917944821420479
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.021161227517265627,
+            "RMSE": 0.03149831144295619
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.02424312701065839,
+            "RMSE": 0.03808403772975689
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.021847826001699478,
+            "RMSE": 0.03304970308138361
+          }
+        ],
+        "walk_forward_MAE_mean": 0.02236,
+        "walk_forward_MAE_std": 0.00115,
+        "walk_forward_RMSE_mean": 0.03545,
+        "final_fit_seconds": 20.71,
+        "predict_ms_per_1000_rows": 45.454,
+        "total_seconds": 256.7
+      },
+      "HistGradientBoosting": {
+        "why": "Boosted trees; usually strongest on tabular data, native NaN and categorical support, fast.",
+        "best_params": {
+          "model__l2_regularization": 0.0,
+          "model__learning_rate": 0.03,
+          "model__max_iter": 600,
+          "model__max_leaf_nodes": 63
+        },
+        "validation_MAE": 0.02113,
+        "tuning_log": [
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02282,
+            "fit_seconds": 0.83
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02185,
+            "fit_seconds": 1.33
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02127,
+            "fit_seconds": 1.98
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02185,
+            "fit_seconds": 1.44
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02125,
+            "fit_seconds": 2.3
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02113,
+            "fit_seconds": 3.81
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02169,
+            "fit_seconds": 0.76
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02131,
+            "fit_seconds": 1.11
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02149,
+            "fit_seconds": 1.8
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02129,
+            "fit_seconds": 1.43
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02136,
+            "fit_seconds": 2.27
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02166,
+            "fit_seconds": 3.44
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02284,
+            "fit_seconds": 0.81
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02189,
+            "fit_seconds": 1.27
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02143,
+            "fit_seconds": 2.37
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.0219,
+            "fit_seconds": 1.47
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02121,
+            "fit_seconds": 2.32
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02117,
+            "fit_seconds": 3.87
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02178,
+            "fit_seconds": 0.73
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02134,
+            "fit_seconds": 1.32
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02143,
+            "fit_seconds": 1.8
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.02144,
+            "fit_seconds": 1.32
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.02125,
+            "fit_seconds": 1.8
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.02158,
+            "fit_seconds": 3.51
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.019221506867331112,
+            "RMSE": 0.03437087862388367
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.019126696499844664,
+            "RMSE": 0.02777058684125971
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.023751269133767242,
+            "RMSE": 0.0372142855549232
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.020093388975784922,
+            "RMSE": 0.029685051289198235
+          }
+        ],
+        "walk_forward_MAE_mean": 0.02055,
+        "walk_forward_MAE_std": 0.00189,
+        "walk_forward_RMSE_mean": 0.03226,
+        "final_fit_seconds": 4.1,
+        "predict_ms_per_1000_rows": 20.644,
+        "total_seconds": 64.2
+      }
+    },
+    "classification": {
+      "Majority class (baseline)": {
+        "why": "Always predicts the most common status.",
+        "best_params": {},
+        "validation_macro_F1": 0.14732,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.14732,
+            "fit_seconds": 0.02
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.16864864864864865
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.16794731064763996
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.15659777424483307
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.1479126679462572
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.16028,
+        "walk_forward_macro_F1_std": 0.00859,
+        "final_fit_seconds": 0.01,
+        "predict_ms_per_1000_rows": 0.034,
+        "total_seconds": 0.1
+      },
+      "Persistence (baseline)": {
+        "why": "Status in h minutes = status now.",
+        "best_params": {},
+        "validation_macro_F1": 0.70485,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.70485,
+            "fit_seconds": 0.01
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.7263411946338105
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.7219466213619954
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.719631263736619
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.6982919359949933
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.71655,
+        "walk_forward_macro_F1_std": 0.01081,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.015,
+        "total_seconds": 0.1
+      },
+      "Logistic Regression": {
+        "why": "Linear multinomial classifier; interpretable reference.",
+        "best_params": {
+          "model__C": 1.0,
+          "model__class_weight": "balanced"
+        },
+        "validation_macro_F1": 0.88452,
+        "tuning_log": [
+          {
+            "params": {
+              "model__C": 0.1,
+              "model__class_weight": null
+            },
+            "score": 0.86779,
+            "fit_seconds": 0.44
+          },
+          {
+            "params": {
+              "model__C": 0.1,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.87836,
+            "fit_seconds": 0.48
+          },
+          {
+            "params": {
+              "model__C": 1.0,
+              "model__class_weight": null
+            },
+            "score": 0.87406,
+            "fit_seconds": 0.69
+          },
+          {
+            "params": {
+              "model__C": 1.0,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.88452,
+            "fit_seconds": 0.84
+          },
+          {
+            "params": {
+              "model__C": 10.0,
+              "model__class_weight": null
+            },
+            "score": 0.87804,
+            "fit_seconds": 0.92
+          },
+          {
+            "params": {
+              "model__C": 10.0,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.88275,
+            "fit_seconds": 1.24
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.8668389404532149
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.8625520442360896
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.8858513697629208
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.8787035105698154
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.87349,
+        "walk_forward_macro_F1_std": 0.00927,
+        "final_fit_seconds": 1.0,
+        "predict_ms_per_1000_rows": 1.095,
+        "total_seconds": 8.7
+      },
+      "Random Forest": {
+        "why": "Non-linear ensemble; class_weight tested for the rarer FULL/HIGH classes.",
+        "best_params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 20,
+          "model__min_samples_leaf": 1
+        },
+        "validation_macro_F1": 0.89961,
+        "tuning_log": [
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.88612,
+            "fit_seconds": 3.34
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.88517,
+            "fit_seconds": 3.47
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.89466,
+            "fit_seconds": 4.12
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.88875,
+            "fit_seconds": 3.81
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.89494,
+            "fit_seconds": 4.16
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": null,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.88842,
+            "fit_seconds": 3.86
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.89309,
+            "fit_seconds": 3.26
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.88953,
+            "fit_seconds": 3.26
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.89961,
+            "fit_seconds": 3.89
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.89469,
+            "fit_seconds": 4.01
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.89501,
+            "fit_seconds": 4.26
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": null,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.89405,
+            "fit_seconds": 3.66
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.896021964478008
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.9028432242334744
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.8867169611795456
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.9034850156655139
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.89727,
+        "walk_forward_macro_F1_std": 0.00676,
+        "final_fit_seconds": 5.31,
+        "predict_ms_per_1000_rows": 17.605,
+        "total_seconds": 64.9
+      },
+      "HistGradientBoosting": {
+        "why": "Boosted trees; strong tabular classifier with class weighting option.",
+        "best_params": {
+          "model__class_weight": "balanced",
+          "model__learning_rate": 0.1,
+          "model__max_iter": 300,
+          "model__max_leaf_nodes": 31
+        },
+        "validation_macro_F1": 0.90095,
+        "tuning_log": [
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.89753,
+            "fit_seconds": 3.11
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.89493,
+            "fit_seconds": 4.78
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.89236,
+            "fit_seconds": 3.07
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.89871,
+            "fit_seconds": 4.88
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.89614,
+            "fit_seconds": 4.55
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.8991,
+            "fit_seconds": 6.81
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.89993,
+            "fit_seconds": 4.53
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.90095,
+            "fit_seconds": 6.39
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.8793705460183006
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.8903992929427954
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.8911097924080601
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.8978414822669469
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.88968,
+        "walk_forward_macro_F1_std": 0.00662,
+        "final_fit_seconds": 5.88,
+        "predict_ms_per_1000_rows": 27.993,
+        "total_seconds": 67.1
+      },
+      "Thresholded HistGradientBoosting": {
+        "why": "Status obtained by applying the LOW/MODERATE/HIGH/FULL thresholds to the selected regressor's forecast.",
+        "best_params": {},
+        "validation_macro_F1": null,
+        "tuning_log": [],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.9053468561990216
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.9006122738435879
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.897141309958057
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.8997355810896096
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.90071,
+        "walk_forward_macro_F1_std": 0.00297,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 16.254,
+        "total_seconds": 0.0
+      }
+    },
+    "selected_regressor": "HistGradientBoosting",
+    "interval": {
+      "method": "absolute walk-forward residual quantile (split-conformal style)",
+      "n_residuals": 12049,
+      "halfwidth_90": 0.04499,
+      "halfwidth_80": 0.03059
+    },
+    "selected_classifier": "Thresholded HistGradientBoosting"
+  },
+  "30": {
+    "horizon_minutes": 30,
+    "rows": {
+      "train": 21157,
+      "val": 5374,
+      "test": 6072
+    },
+    "date_ranges": {
+      "train": [
+        "2016-10-04",
+        "2016-11-21"
+      ],
+      "val": [
+        "2016-11-22",
+        "2016-12-05"
+      ],
+      "test": [
+        "2016-12-06",
+        "2016-12-19"
+      ]
+    },
+    "walk_forward_folds": [
+      [
+        "2016-11-06",
+        "2016-11-12"
+      ],
+      [
+        "2016-11-13",
+        "2016-11-19"
+      ],
+      [
+        "2016-11-20",
+        "2016-11-26"
+      ],
+      [
+        "2016-11-27",
+        "2016-12-05"
+      ]
+    ],
+    "regression": {
+      "Persistence (baseline)": {
+        "why": "Naive 'nothing changes' forecast; any useful model must beat it.",
+        "best_params": {},
+        "validation_MAE": 0.03831,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.03831,
+            "fit_seconds": 0.03
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.03401570301338146,
+            "RMSE": 0.05127276500300572
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.03428127768138069,
+            "RMSE": 0.049446391841560744
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.037084695815302764,
+            "RMSE": 0.05358727154424833
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.03896397351823959,
+            "RMSE": 0.055432159770310116
+          }
+        ],
+        "walk_forward_MAE_mean": 0.03609,
+        "walk_forward_MAE_std": 0.00205,
+        "walk_forward_RMSE_mean": 0.05243,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.009,
+        "total_seconds": 0.1
+      },
+      "Historical profile (baseline)": {
+        "why": "Average occupancy for this car park, weekday and time - what static 'busy times' charts show.",
+        "best_params": {},
+        "validation_MAE": 0.07449,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.07449,
+            "fit_seconds": 0.01
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.04937074729735249,
+            "RMSE": 0.08087674079068267
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.05785518215554471,
+            "RMSE": 0.08459868934947379
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.07898581855536692,
+            "RMSE": 0.11630204990860381
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.06909686986016178,
+            "RMSE": 0.0945103038494265
+          }
+        ],
+        "walk_forward_MAE_mean": 0.06383,
+        "walk_forward_MAE_std": 0.0112,
+        "walk_forward_RMSE_mean": 0.09407,
+        "final_fit_seconds": 0.01,
+        "predict_ms_per_1000_rows": 0.227,
+        "total_seconds": 0.1
+      },
+      "Persistence + weekly shape (baseline)": {
+        "why": "Current occupancy plus last week's change over the same interval; a strong hand-crafted rule.",
+        "best_params": {},
+        "validation_MAE": 0.01582,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.01582,
+            "fit_seconds": 0.0
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.014352653178575083,
+            "RMSE": 0.027716924315921647
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.013744513639636505,
+            "RMSE": 0.021342188681909468
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.01496229203100681,
+            "RMSE": 0.023294705090751024
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.016737320397473353,
+            "RMSE": 0.027959232289890078
+          }
+        ],
+        "walk_forward_MAE_mean": 0.01495,
+        "walk_forward_MAE_std": 0.00112,
+        "walk_forward_RMSE_mean": 0.02508,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.024,
+        "total_seconds": 0.0
+      },
+      "Ridge Regression": {
+        "why": "Interpretable linear model; tests whether a linear combination of lags and time explains the target.",
+        "best_params": {
+          "model__alpha": 0.1
+        },
+        "validation_MAE": 0.01653,
+        "tuning_log": [
+          {
+            "params": {
+              "model__alpha": 0.1
+            },
+            "score": 0.01653,
+            "fit_seconds": 0.09
+          },
+          {
+            "params": {
+              "model__alpha": 1.0
+            },
+            "score": 0.01654,
+            "fit_seconds": 0.07
+          },
+          {
+            "params": {
+              "model__alpha": 10.0
+            },
+            "score": 0.01663,
+            "fit_seconds": 0.07
+          },
+          {
+            "params": {
+              "model__alpha": 100.0
+            },
+            "score": 0.01718,
+            "fit_seconds": 0.06
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.01622333301126429,
+            "RMSE": 0.02851358017599032
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.014696054832984157,
+            "RMSE": 0.021633098091598524
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.016158765808670525,
+            "RMSE": 0.024491427151920292
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.017368643926565532,
+            "RMSE": 0.02739735460187333
+          }
+        ],
+        "walk_forward_MAE_mean": 0.01611,
+        "walk_forward_MAE_std": 0.00095,
+        "walk_forward_RMSE_mean": 0.02551,
+        "final_fit_seconds": 0.07,
+        "predict_ms_per_1000_rows": 1.407,
+        "total_seconds": 0.6
+      },
+      "Random Forest": {
+        "why": "Non-linear bagged trees; captures interactions (e.g. park x time) and is robust to outliers.",
+        "best_params": {
+          "model__max_depth": 20,
+          "model__max_features": 0.5,
+          "model__min_samples_leaf": 1
+        },
+        "validation_MAE": 0.01425,
+        "tuning_log": [
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.01495,
+            "fit_seconds": 6.59
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01498,
+            "fit_seconds": 6.27
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.01565,
+            "fit_seconds": 5.91
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.01501,
+            "fit_seconds": 11.07
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01493,
+            "fit_seconds": 10.79
+          },
+          {
+            "params": {
+              "model__max_depth": 10,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.0154,
+            "fit_seconds": 12.73
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.01425,
+            "fit_seconds": 9.54
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01451,
+            "fit_seconds": 7.56
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.01551,
+            "fit_seconds": 5.61
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.01442,
+            "fit_seconds": 17.26
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01452,
+            "fit_seconds": 13.64
+          },
+          {
+            "params": {
+              "model__max_depth": 20,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.01533,
+            "fit_seconds": 10.96
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.0143,
+            "fit_seconds": 9.76
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01452,
+            "fit_seconds": 6.78
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 0.5,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.01551,
+            "fit_seconds": 6.03
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.01443,
+            "fit_seconds": 17.46
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.01452,
+            "fit_seconds": 13.1
+          },
+          {
+            "params": {
+              "model__max_depth": null,
+              "model__max_features": 1.0,
+              "model__min_samples_leaf": 20
+            },
+            "score": 0.01533,
+            "fit_seconds": 10.64
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.013503453917325011,
+            "RMSE": 0.02506356222865394
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.013356133137381392,
+            "RMSE": 0.019578029794065078
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.014917700137215493,
+            "RMSE": 0.023343186479874004
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.013926650398473699,
+            "RMSE": 0.021075769300303075
+          }
+        ],
+        "walk_forward_MAE_mean": 0.01393,
+        "walk_forward_MAE_std": 0.00061,
+        "walk_forward_RMSE_mean": 0.02227,
+        "final_fit_seconds": 13.05,
+        "predict_ms_per_1000_rows": 48.244,
+        "total_seconds": 229.6
+      },
+      "HistGradientBoosting": {
+        "why": "Boosted trees; usually strongest on tabular data, native NaN and categorical support, fast.",
+        "best_params": {
+          "model__l2_regularization": 1.0,
+          "model__learning_rate": 0.03,
+          "model__max_iter": 600,
+          "model__max_leaf_nodes": 63
+        },
+        "validation_MAE": 0.01303,
+        "tuning_log": [
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.014,
+            "fit_seconds": 0.79
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01345,
+            "fit_seconds": 1.53
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01323,
+            "fit_seconds": 2.15
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01346,
+            "fit_seconds": 1.59
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01319,
+            "fit_seconds": 2.21
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01311,
+            "fit_seconds": 3.96
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.0134,
+            "fit_seconds": 0.8
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01311,
+            "fit_seconds": 1.24
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01338,
+            "fit_seconds": 1.95
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01334,
+            "fit_seconds": 1.48
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01312,
+            "fit_seconds": 2.11
+          },
+          {
+            "params": {
+              "model__l2_regularization": 0.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.0136,
+            "fit_seconds": 3.77
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01408,
+            "fit_seconds": 0.84
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01343,
+            "fit_seconds": 1.27
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01317,
+            "fit_seconds": 2.36
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01351,
+            "fit_seconds": 1.62
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01316,
+            "fit_seconds": 2.56
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01303,
+            "fit_seconds": 3.91
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01343,
+            "fit_seconds": 0.75
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.0132,
+            "fit_seconds": 1.04
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01347,
+            "fit_seconds": 1.93
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.01329,
+            "fit_seconds": 2.03
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.01326,
+            "fit_seconds": 2.43
+          },
+          {
+            "params": {
+              "model__l2_regularization": 1.0,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 600,
+              "model__max_leaf_nodes": 63
+            },
+            "score": 0.01359,
+            "fit_seconds": 5.44
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "MAE": 0.012475303853166992,
+            "RMSE": 0.023902124138372637
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "MAE": 0.012567850399509077,
+            "RMSE": 0.01814924965041362
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "MAE": 0.014031759079240749,
+            "RMSE": 0.02162267736709852
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "MAE": 0.012543007245032597,
+            "RMSE": 0.01882882085628804
+          }
+        ],
+        "walk_forward_MAE_mean": 0.0129,
+        "walk_forward_MAE_std": 0.00065,
+        "walk_forward_RMSE_mean": 0.02063,
+        "final_fit_seconds": 4.0,
+        "predict_ms_per_1000_rows": 23.157,
+        "total_seconds": 77.2
+      }
+    },
+    "classification": {
+      "Majority class (baseline)": {
+        "why": "Always predicts the most common status.",
+        "best_params": {},
+        "validation_macro_F1": 0.15383,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.15383,
+            "fit_seconds": 0.04
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.1738825415915013
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.17346731628095818
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.16182088285229201
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.15517241379310345
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.16609,
+        "walk_forward_macro_F1_std": 0.00795,
+        "final_fit_seconds": 0.02,
+        "predict_ms_per_1000_rows": 0.059,
+        "total_seconds": 0.2
+      },
+      "Persistence (baseline)": {
+        "why": "Status in h minutes = status now.",
+        "best_params": {},
+        "validation_macro_F1": 0.8375,
+        "tuning_log": [
+          {
+            "params": {},
+            "score": 0.8375,
+            "fit_seconds": 0.02
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.8513027695947095
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.8478363406039885
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.8432681774065913
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.8337036500011045
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.84403,
+        "walk_forward_macro_F1_std": 0.00661,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 0.033,
+        "total_seconds": 0.1
+      },
+      "Logistic Regression": {
+        "why": "Linear multinomial classifier; interpretable reference.",
+        "best_params": {
+          "model__C": 1.0,
+          "model__class_weight": "balanced"
+        },
+        "validation_macro_F1": 0.92978,
+        "tuning_log": [
+          {
+            "params": {
+              "model__C": 0.1,
+              "model__class_weight": null
+            },
+            "score": 0.91055,
+            "fit_seconds": 0.56
+          },
+          {
+            "params": {
+              "model__C": 0.1,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.91299,
+            "fit_seconds": 0.69
+          },
+          {
+            "params": {
+              "model__C": 1.0,
+              "model__class_weight": null
+            },
+            "score": 0.92136,
+            "fit_seconds": 0.7
+          },
+          {
+            "params": {
+              "model__C": 1.0,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.92978,
+            "fit_seconds": 0.95
+          },
+          {
+            "params": {
+              "model__C": 10.0,
+              "model__class_weight": null
+            },
+            "score": 0.92211,
+            "fit_seconds": 0.69
+          },
+          {
+            "params": {
+              "model__C": 10.0,
+              "model__class_weight": "balanced"
+            },
+            "score": 0.92861,
+            "fit_seconds": 1.09
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.9175511557123537
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.9060806269980054
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.9261851711251716
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.9286745941840808
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.91962,
+        "walk_forward_macro_F1_std": 0.00884,
+        "final_fit_seconds": 1.08,
+        "predict_ms_per_1000_rows": 1.907,
+        "total_seconds": 9.1
+      },
+      "Random Forest": {
+        "why": "Non-linear ensemble; class_weight tested for the rarer FULL/HIGH classes.",
+        "best_params": {
+          "model__class_weight": "balanced",
+          "model__max_depth": 20,
+          "model__min_samples_leaf": 5
+        },
+        "validation_macro_F1": 0.93356,
+        "tuning_log": [
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.92947,
+            "fit_seconds": 5.92
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.92836,
+            "fit_seconds": 3.45
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.93161,
+            "fit_seconds": 4.25
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.93028,
+            "fit_seconds": 4.42
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.93043,
+            "fit_seconds": 4.32
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__max_depth": null,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.92931,
+            "fit_seconds": 4.02
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.92712,
+            "fit_seconds": 3.63
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 10,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.92785,
+            "fit_seconds": 3.55
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.93228,
+            "fit_seconds": 4.13
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": 20,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.93356,
+            "fit_seconds": 3.87
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": null,
+              "model__min_samples_leaf": 1
+            },
+            "score": 0.9331,
+            "fit_seconds": 4.46
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__max_depth": null,
+              "model__min_samples_leaf": 5
+            },
+            "score": 0.93299,
+            "fit_seconds": 3.95
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.9372519503412816
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.932221824019715
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.9320400841917693
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.9325633409138276
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.93352,
+        "walk_forward_macro_F1_std": 0.00216,
+        "final_fit_seconds": 5.09,
+        "predict_ms_per_1000_rows": 16.591,
+        "total_seconds": 69.6
+      },
+      "HistGradientBoosting": {
+        "why": "Boosted trees; strong tabular classifier with class weighting option.",
+        "best_params": {
+          "model__class_weight": "balanced",
+          "model__learning_rate": 0.03,
+          "model__max_iter": 300,
+          "model__max_leaf_nodes": 15
+        },
+        "validation_macro_F1": 0.93371,
+        "tuning_log": [
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.93261,
+            "fit_seconds": 3.43
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.93253,
+            "fit_seconds": 5.14
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.93022,
+            "fit_seconds": 3.22
+          },
+          {
+            "params": {
+              "model__class_weight": null,
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.93227,
+            "fit_seconds": 5.5
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.93371,
+            "fit_seconds": 4.8
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.03,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.93272,
+            "fit_seconds": 6.42
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 15
+            },
+            "score": 0.92978,
+            "fit_seconds": 4.64
+          },
+          {
+            "params": {
+              "model__class_weight": "balanced",
+              "model__learning_rate": 0.1,
+              "model__max_iter": 300,
+              "model__max_leaf_nodes": 31
+            },
+            "score": 0.9294,
+            "fit_seconds": 6.28
+          }
+        ],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.9281691415085868
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.9332495420019702
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.9345610964987089
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.9337144534225084
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.93242,
+        "walk_forward_macro_F1_std": 0.0025,
+        "final_fit_seconds": 4.71,
+        "predict_ms_per_1000_rows": 28.459,
+        "total_seconds": 63.3
+      },
+      "Thresholded HistGradientBoosting": {
+        "why": "Status obtained by applying the LOW/MODERATE/HIGH/FULL thresholds to the selected regressor's forecast.",
+        "best_params": {},
+        "validation_macro_F1": null,
+        "tuning_log": [],
+        "walk_forward": [
+          {
+            "fold": "2016-11-06..2016-11-12",
+            "macro_F1": 0.9350067363311132
+          },
+          {
+            "fold": "2016-11-13..2016-11-19",
+            "macro_F1": 0.9417801395679438
+          },
+          {
+            "fold": "2016-11-20..2016-11-26",
+            "macro_F1": 0.9392946074190687
+          },
+          {
+            "fold": "2016-11-27..2016-12-05",
+            "macro_F1": 0.9419744919865628
+          }
+        ],
+        "walk_forward_macro_F1_mean": 0.93951,
+        "walk_forward_macro_F1_std": 0.00281,
+        "final_fit_seconds": 0.0,
+        "predict_ms_per_1000_rows": 22.602,
+        "total_seconds": 0.0
+      }
+    },
+    "selected_regressor": "HistGradientBoosting",
+    "interval": {
+      "method": "absolute walk-forward residual quantile (split-conformal style)",
+      "n_residuals": 12778,
+      "halfwidth_90": 0.0287,
+      "halfwidth_80": 0.0196
+    },
+    "selected_classifier": "Thresholded HistGradientBoosting"
+  }
+}

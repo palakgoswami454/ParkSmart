@@ -1,0 +1,282 @@
+{
+  "raw_audit": {
+    "rows": 35717,
+    "columns": [
+      "SystemCodeNumber",
+      "Capacity",
+      "Occupancy",
+      "LastUpdated"
+    ],
+    "car_parks": 30,
+    "first_timestamp": "2016-10-04 07:46:28",
+    "last_timestamp": "2016-12-19 16:30:35",
+    "calendar_days_in_range": 77,
+    "days_with_data": 73,
+    "days_without_any_data": [
+      "2016-10-20",
+      "2016-10-21",
+      "2016-12-03",
+      "2016-12-04"
+    ],
+    "missing_values_per_column": {
+      "SystemCodeNumber": 0,
+      "Capacity": 0,
+      "Occupancy": 0,
+      "LastUpdated": 0
+    },
+    "missing_value_pct_per_column": {
+      "SystemCodeNumber": 0.0,
+      "Capacity": 0.0,
+      "Occupancy": 0.0,
+      "LastUpdated": 0.0
+    },
+    "exact_duplicate_rows": 216,
+    "duplicate_park_timestamp_pairs": 216,
+    "negative_occupancy_rows": 12,
+    "occupancy_above_capacity_rows": 373,
+    "max_occupancy_rate": 1.0413,
+    "min_occupancy_rate": -0.0167,
+    "parks_with_changing_capacity": 0,
+    "median_minutes_between_readings": 29.98,
+    "typical_reading_hours": "07:30:33 - 16:34:28",
+    "per_park": {
+      "BHMBCCMKT01": {
+        "observations": 1312,
+        "capacity": 577,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.2808
+      },
+      "BHMBCCPST01": {
+        "observations": 1276,
+        "capacity": 317,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.4291
+      },
+      "BHMBCCSNH01": {
+        "observations": 1294,
+        "capacity": 863,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6629
+      },
+      "BHMBCCTHL01": {
+        "observations": 1312,
+        "capacity": 387,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.7451
+      },
+      "BHMBRCBRG01": {
+        "observations": 1186,
+        "capacity": 1010,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.641
+      },
+      "BHMBRCBRG02": {
+        "observations": 1186,
+        "capacity": 1194,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.4725
+      },
+      "BHMBRCBRG03": {
+        "observations": 1186,
+        "capacity": 849,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.2867
+      },
+      "BHMBRTARC01": {
+        "observations": 88,
+        "capacity": 496,
+        "first_reading": "2016-12-13 08:02:51",
+        "last_reading": "2016-12-18 16:30:25",
+        "mean_occupancy_rate": 0.7766
+      },
+      "BHMEURBRD01": {
+        "observations": 1312,
+        "capacity": 470,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6436
+      },
+      "BHMEURBRD02": {
+        "observations": 1276,
+        "capacity": 220,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6207
+      },
+      "BHMMBMMBX01": {
+        "observations": 1312,
+        "capacity": 687,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6948
+      },
+      "BHMNCPHST01": {
+        "observations": 1312,
+        "capacity": 1200,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.4647
+      },
+      "BHMNCPLDH01": {
+        "observations": 1292,
+        "capacity": 720,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.7017
+      },
+      "BHMNCPNHS01": {
+        "observations": 1038,
+        "capacity": 500,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.711
+      },
+      "BHMNCPNST01": {
+        "observations": 1312,
+        "capacity": 485,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.5896
+      },
+      "BHMNCPPLS01": {
+        "observations": 1291,
+        "capacity": 450,
+        "first_reading": "2016-10-04 07:46:28",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.1926
+      },
+      "BHMNCPRAN01": {
+        "observations": 1186,
+        "capacity": 600,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6455
+      },
+      "Broad Street": {
+        "observations": 1312,
+        "capacity": 690,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.6321
+      },
+      "Bull Ring": {
+        "observations": 1186,
+        "capacity": 3053,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.4765
+      },
+      "NIA Car Parks": {
+        "observations": 1204,
+        "capacity": 1268,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-16 16:30:12",
+        "mean_occupancy_rate": 0.1635
+      },
+      "NIA North": {
+        "observations": 162,
+        "capacity": 480,
+        "first_reading": "2016-10-16 08:01:13",
+        "last_reading": "2016-11-30 16:28:40",
+        "mean_occupancy_rate": 0.0738
+      },
+      "NIA South": {
+        "observations": 1204,
+        "capacity": 788,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-16 16:30:12",
+        "mean_occupancy_rate": 0.2492
+      },
+      "Others-CCCPS105a": {
+        "observations": 1312,
+        "capacity": 2009,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.5667
+      },
+      "Others-CCCPS119a": {
+        "observations": 1312,
+        "capacity": 2803,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.1927
+      },
+      "Others-CCCPS133": {
+        "observations": 1294,
+        "capacity": 4675,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.4715
+      },
+      "Others-CCCPS135a": {
+        "observations": 1312,
+        "capacity": 3883,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.5904
+      },
+      "Others-CCCPS202": {
+        "observations": 1312,
+        "capacity": 2937,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.3442
+      },
+      "Others-CCCPS8": {
+        "observations": 1312,
+        "capacity": 1322,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.5002
+      },
+      "Others-CCCPS98": {
+        "observations": 1312,
+        "capacity": 3103,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.3272
+      },
+      "Shopping": {
+        "observations": 1312,
+        "capacity": 1920,
+        "first_reading": "2016-10-04 07:59:42",
+        "last_reading": "2016-12-19 16:30:35",
+        "mean_occupancy_rate": 0.5557
+      }
+    }
+  },
+  "cleaning": {
+    "rows_in": 35717,
+    "after_dropping_exact_duplicates": 35501,
+    "negative_occupancy_clipped_to_zero": 12,
+    "rates_above_1_capped": 373,
+    "sparse_parks_dropped": {
+      "BHMBRTARC01": 88,
+      "NIA North": 159
+    },
+    "rows_out": 35254,
+    "parks_out": 28
+  },
+  "grid": {
+    "readings_snapped_to_grid": 34962,
+    "readings_outside_grid_dropped": 292,
+    "slots_with_multiple_readings_averaged": 17,
+    "grid_rows": 36792,
+    "grid_missing_slots": 1847,
+    "grid_missing_pct": 5.02,
+    "grid_days": 73
+  },
+  "status_distribution_on_grid": {
+    "LOW": 18274,
+    "MODERATE": 9054,
+    "HIGH": 4605,
+    "FULL": 3012
+  }
+}

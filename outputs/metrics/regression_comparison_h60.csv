@@ -1,0 +1,7 @@
+Model,Test MAE (pp),Test RMSE (pp),Test R2,Test MAE (spaces),MAE vs persistence (%),Walk-forward MAE (pp),Walk-forward MAE std (pp),Validation MAE (pp),Fit time (s),Predict ms / 1000 rows,Selected
+Persistence (baseline),7.0727,10.0648,0.852,97.2634,0.0,6.899,0.423,7.355,0.0,0.006,False
+Historical profile (baseline),7.2373,9.9914,0.8542,101.7086,-2.3261,6.503,1.135,7.597,0.01,0.253,False
+Persistence + weekly shape (baseline),2.7874,4.8516,0.9656,34.4149,60.5891,2.258,0.242,2.468,0.0,0.022,False
+Ridge Regression,2.8265,4.1563,0.9748,35.3314,60.0369,2.637,0.153,2.683,0.05,1.383,False
+Random Forest,2.2876,3.4458,0.9827,27.8879,67.6557,2.236,0.115,2.269,20.71,45.454,False
+HistGradientBoosting,2.0209,2.9993,0.9869,24.6551,71.4264,2.055,0.189,2.113,4.1,20.644,True

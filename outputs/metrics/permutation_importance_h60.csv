@@ -1,0 +1,17 @@
+feature,importance_MAE_increase_pp,std_pp
+rate_now,25.3865,0.1732
+origin_slot,2.1614,0.018
+rate_delta1,1.6347,0.0122
+park_code,1.0678,0.0112
+target_slot_rate_7d_ago,1.0112,0.017
+day_of_week,0.4886,0.0157
+now_slot_rate_7d_ago,0.3687,0.012
+rate_roll3_std,0.3329,0.0085
+target_slot_rate_1d_ago,0.2078,0.0099
+rate_lag1,0.1484,0.0049
+rate_roll3_mean,0.0883,0.0078
+rate_lag2,0.0384,0.0026
+capacity,0.0005,0.0011
+is_weekend,0.0,0.0
+target_slot,0.0,0.0
+target_hour,0.0,0.0

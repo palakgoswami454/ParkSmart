@@ -1,0 +1,248 @@
+{
+  "figures": {
+    "occupancy_distribution": "outputs/figures/eda_01_occupancy_distribution.png",
+    "hour_profile": "outputs/figures/eda_02_hour_of_day_profile.png",
+    "weekday_hour_heatmap": "outputs/figures/eda_03_weekday_hour_heatmap.png",
+    "facility_comparison": "outputs/figures/eda_04_facility_comparison.png",
+    "daily_trend": "outputs/figures/eda_05_daily_trend.png",
+    "coverage_map": "outputs/figures/eda_06_missing_data_map.png",
+    "feature_correlation": "outputs/figures/eda_07_feature_target_correlation.png",
+    "daily_curves": "outputs/figures/eda_08_daily_curves_examples.png"
+  },
+  "occupancy_rate_mean": 0.4972,
+  "occupancy_rate_median": 0.4763,
+  "status_share": {
+    "LOW": 0.5229,
+    "MODERATE": 0.2591,
+    "HIGH": 0.1318,
+    "FULL": 0.0862
+  },
+  "hour_profile_mean": {
+    "08:00": 0.2146,
+    "08:30": 0.2603,
+    "09:00": 0.3239,
+    "09:30": 0.3741,
+    "10:00": 0.4302,
+    "10:30": 0.4756,
+    "11:00": 0.5157,
+    "11:30": 0.5471,
+    "12:00": 0.5749,
+    "12:30": 0.5918,
+    "13:00": 0.6064,
+    "13:30": 0.6113,
+    "14:00": 0.6157,
+    "14:30": 0.6057,
+    "15:00": 0.589,
+    "15:30": 0.5637,
+    "16:00": 0.5319,
+    "16:30": 0.4879
+  },
+  "peak_time": "14:00",
+  "peak_mean_rate": 0.6157,
+  "lowest_time": "08:00",
+  "weekday_mean": {
+    "Mon": 0.5163,
+    "Tue": 0.542,
+    "Wed": 0.5421,
+    "Thu": 0.5495,
+    "Fri": 0.5192,
+    "Sat": 0.4308,
+    "Sun": 0.3557
+  },
+  "weekday_vs_weekend_mean": {
+    "weekday": 0.5339,
+    "weekend": 0.3934
+  },
+  "facilities": {
+    "NIA Car Parks": {
+      "mean_rate": 0.1641,
+      "full_share": 0.0,
+      "capacity": 1268
+    },
+    "Others-CCCPS119a": {
+      "mean_rate": 0.1934,
+      "full_share": 0.0,
+      "capacity": 2803
+    },
+    "BHMNCPPLS01": {
+      "mean_rate": 0.2024,
+      "full_share": 0.0,
+      "capacity": 450
+    },
+    "NIA South": {
+      "mean_rate": 0.2502,
+      "full_share": 0.0,
+      "capacity": 788
+    },
+    "BHMBCCMKT01": {
+      "mean_rate": 0.2815,
+      "full_share": 0.0031,
+      "capacity": 577
+    },
+    "BHMBRCBRG03": {
+      "mean_rate": 0.2879,
+      "full_share": 0.0,
+      "capacity": 849
+    },
+    "Others-CCCPS98": {
+      "mean_rate": 0.3278,
+      "full_share": 0.0,
+      "capacity": 3103
+    },
+    "Others-CCCPS202": {
+      "mean_rate": 0.3449,
+      "full_share": 0.0,
+      "capacity": 2937
+    },
+    "BHMBCCPST01": {
+      "mean_rate": 0.4305,
+      "full_share": 0.0395,
+      "capacity": 317
+    },
+    "BHMNCPHST01": {
+      "mean_rate": 0.4692,
+      "full_share": 0.0,
+      "capacity": 1200
+    },
+    "Others-CCCPS133": {
+      "mean_rate": 0.4728,
+      "full_share": 0.0023,
+      "capacity": 4675
+    },
+    "BHMBRCBRG02": {
+      "mean_rate": 0.4764,
+      "full_share": 0.1026,
+      "capacity": 1194
+    },
+    "Bull Ring": {
+      "mean_rate": 0.4793,
+      "full_share": 0.0196,
+      "capacity": 3053
+    },
+    "Others-CCCPS8": {
+      "mean_rate": 0.501,
+      "full_share": 0.0031,
+      "capacity": 1322
+    },
+    "Shopping": {
+      "mean_rate": 0.5572,
+      "full_share": 0.0,
+      "capacity": 1920
+    },
+    "Others-CCCPS105a": {
+      "mean_rate": 0.5677,
+      "full_share": 0.0031,
+      "capacity": 2009
+    },
+    "BHMNCPNST01": {
+      "mean_rate": 0.5912,
+      "full_share": 0.0047,
+      "capacity": 485
+    },
+    "Others-CCCPS135a": {
+      "mean_rate": 0.5918,
+      "full_share": 0.0031,
+      "capacity": 3883
+    },
+    "BHMEURBRD02": {
+      "mean_rate": 0.6227,
+      "full_share": 0.2545,
+      "capacity": 220
+    },
+    "Broad Street": {
+      "mean_rate": 0.6342,
+      "full_share": 0.239,
+      "capacity": 690
+    },
+    "BHMEURBRD01": {
+      "mean_rate": 0.6458,
+      "full_share": 0.2506,
+      "capacity": 470
+    },
+    "BHMBRCBRG01": {
+      "mean_rate": 0.6468,
+      "full_share": 0.3014,
+      "capacity": 1010
+    },
+    "BHMNCPRAN01": {
+      "mean_rate": 0.6566,
+      "full_share": 0.182,
+      "capacity": 600
+    },
+    "BHMBCCSNH01": {
+      "mean_rate": 0.6647,
+      "full_share": 0.1846,
+      "capacity": 863
+    },
+    "BHMMBMMBX01": {
+      "mean_rate": 0.6961,
+      "full_share": 0.1175,
+      "capacity": 687
+    },
+    "BHMNCPLDH01": {
+      "mean_rate": 0.7047,
+      "full_share": 0.2054,
+      "capacity": 720
+    },
+    "BHMNCPNHS01": {
+      "mean_rate": 0.7196,
+      "full_share": 0.2854,
+      "capacity": 500
+    },
+    "BHMBCCTHL01": {
+      "mean_rate": 0.7423,
+      "full_share": 0.2611,
+      "capacity": 387
+    }
+  },
+  "most_often_full": [
+    "BHMBRCBRG01",
+    "BHMNCPNHS01",
+    "BHMBCCTHL01",
+    "BHMEURBRD02",
+    "BHMEURBRD01"
+  ],
+  "least_used": [
+    "NIA Car Parks",
+    "Others-CCCPS119a",
+    "BHMNCPPLS01",
+    "NIA South",
+    "BHMBCCMKT01"
+  ],
+  "mean_rate_by_split": {
+    "train": 0.4762,
+    "val": 0.5344,
+    "test": 0.5359
+  },
+  "grid_missing_pct": 5.02,
+  "parks_most_missing": {
+    "BHMNCPNHS01": 23.74,
+    "BHMNCPRAN01": 13.01,
+    "BHMBRCBRG01": 11.11,
+    "BHMBRCBRG02": 10.96,
+    "Bull Ring": 10.73
+  },
+  "spearman_with_target_h60": {
+    "rate_now": 0.9518,
+    "target_slot_rate_7d_ago": 0.9204,
+    "rate_roll3_mean": 0.9173,
+    "rate_lag1": 0.9078,
+    "now_slot_rate_7d_ago": 0.884,
+    "rate_lag2": 0.8594,
+    "target_slot_rate_1d_ago": 0.7469,
+    "rate_roll3_std": 0.3495,
+    "target_hour": 0.1893,
+    "origin_slot": 0.1893,
+    "target_slot": 0.1893,
+    "rate_delta1": 0.1433,
+    "capacity": -0.205,
+    "day_of_week": -0.2361,
+    "is_weekend": -0.2895
+  },
+  "example_parks": [
+    "BHMBCCTHL01",
+    "Shopping",
+    "NIA Car Parks"
+  ],
+  "raw_rows": 35717
+}

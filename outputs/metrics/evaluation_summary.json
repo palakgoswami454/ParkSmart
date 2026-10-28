@@ -1,0 +1,958 @@
+{
+  "30": {
+    "figures": {
+      "error_by_hour": "outputs/figures/eval_error_by_hour_h30.png",
+      "per_park": "outputs/figures/eval_per_park_mae_h30.png",
+      "actual_vs_pred": "outputs/figures/eval_actual_vs_pred_h30.png",
+      "model_comparison": "outputs/figures/eval_model_comparison_h30.png",
+      "confusion": "outputs/figures/eval_confusion_h30.png",
+      "example_day": "outputs/figures/eval_example_day_h30.png",
+      "permutation_importance": "outputs/figures/eval_permutation_importance_h30.png"
+    },
+    "regression_table": [
+      {
+        "Model": "Persistence (baseline)",
+        "Test MAE (pp)": 3.6709,
+        "Test RMSE (pp)": 5.2475,
+        "Test R2": 0.9611,
+        "Test MAE (spaces)": 49.9136,
+        "MAE vs persistence (%)": 0.0,
+        "Walk-forward MAE (pp)": 3.609,
+        "Walk-forward MAE std (pp)": 0.205,
+        "Validation MAE (pp)": 3.831,
+        "Fit time (s)": 0.0,
+        "Predict ms / 1000 rows": 0.009,
+        "Selected": false
+      },
+      {
+        "Model": "Historical profile (baseline)",
+        "Test MAE (pp)": 7.1045,
+        "Test RMSE (pp)": 9.882,
+        "Test R2": 0.8622,
+        "Test MAE (spaces)": 99.5523,
+        "MAE vs persistence (%)": -93.5345,
+        "Walk-forward MAE (pp)": 6.383,
+        "Walk-forward MAE std (pp)": 1.12,
+        "Validation MAE (pp)": 7.449,
+        "Fit time (s)": 0.01,
+        "Predict ms / 1000 rows": 0.227,
+        "Selected": false
+      },
+      {
+        "Model": "Persistence + weekly shape (baseline)",
+        "Test MAE (pp)": 1.7078,
+        "Test RMSE (pp)": 2.79,
+        "Test R2": 0.989,
+        "Test MAE (spaces)": 20.7067,
+        "MAE vs persistence (%)": 53.4774,
+        "Walk-forward MAE (pp)": 1.495,
+        "Walk-forward MAE std (pp)": 0.112,
+        "Validation MAE (pp)": 1.582,
+        "Fit time (s)": 0.0,
+        "Predict ms / 1000 rows": 0.024,
+        "Selected": false
+      },
+      {
+        "Model": "Ridge Regression",
+        "Test MAE (pp)": 1.6208,
+        "Test RMSE (pp)": 2.3592,
+        "Test R2": 0.9921,
+        "Test MAE (spaces)": 19.9938,
+        "MAE vs persistence (%)": 55.847,
+        "Walk-forward MAE (pp)": 1.611,
+        "Walk-forward MAE std (pp)": 0.095,
+        "Validation MAE (pp)": 1.653,
+        "Fit time (s)": 0.07,
+        "Predict ms / 1000 rows": 1.407,
+        "Selected": false
+      },
+      {
+        "Model": "Random Forest",
+        "Test MAE (pp)": 1.3726,
+        "Test RMSE (pp)": 2.0041,
+        "Test R2": 0.9943,
+        "Test MAE (spaces)": 16.6603,
+        "MAE vs persistence (%)": 62.61,
+        "Walk-forward MAE (pp)": 1.393,
+        "Walk-forward MAE std (pp)": 0.061,
+        "Validation MAE (pp)": 1.425,
+        "Fit time (s)": 13.05,
+        "Predict ms / 1000 rows": 48.244,
+        "Selected": false
+      },
+      {
+        "Model": "HistGradientBoosting",
+        "Test MAE (pp)": 1.2645,
+        "Test RMSE (pp)": 1.8311,
+        "Test R2": 0.9953,
+        "Test MAE (spaces)": 15.3187,
+        "MAE vs persistence (%)": 65.5531,
+        "Walk-forward MAE (pp)": 1.29,
+        "Walk-forward MAE std (pp)": 0.065,
+        "Validation MAE (pp)": 1.303,
+        "Fit time (s)": 4.0,
+        "Predict ms / 1000 rows": 23.157,
+        "Selected": true
+      }
+    ],
+    "classification_table": [
+      {
+        "Model": "Majority class (baseline)",
+        "accuracy": 0.4346,
+        "macro_precision": 0.1087,
+        "macro_recall": 0.25,
+        "macro_F1": 0.1515,
+        "weighted_F1": 0.2633,
+        "LOW_precision": 0.4346,
+        "LOW_recall": 1.0,
+        "LOW_F1": 0.6059,
+        "MODERATE_precision": 0.0,
+        "MODERATE_recall": 0.0,
+        "MODERATE_F1": 0.0,
+        "HIGH_precision": 0.0,
+        "HIGH_recall": 0.0,
+        "HIGH_F1": 0.0,
+        "FULL_precision": 0.0,
+        "FULL_recall": 0.0,
+        "FULL_F1": 0.0,
+        "Walk-forward macro F1": 0.16609,
+        "Walk-forward macro F1 std": 0.00795,
+        "Selected": false
+      },
+      {
+        "Model": "Persistence (baseline)",
+        "accuracy": 0.8776,
+        "macro_precision": 0.8585,
+        "macro_recall": 0.8455,
+        "macro_F1": 0.8511,
+        "weighted_F1": 0.8754,
+        "LOW_precision": 0.9157,
+        "LOW_recall": 0.9875,
+        "LOW_F1": 0.9502,
+        "MODERATE_precision": 0.8721,
+        "MODERATE_recall": 0.7943,
+        "MODERATE_F1": 0.8314,
+        "HIGH_precision": 0.7641,
+        "HIGH_recall": 0.734,
+        "HIGH_F1": 0.7488,
+        "FULL_precision": 0.8819,
+        "FULL_recall": 0.8663,
+        "FULL_F1": 0.8741,
+        "Walk-forward macro F1": 0.84403,
+        "Walk-forward macro F1 std": 0.00661,
+        "Selected": false
+      },
+      {
+        "Model": "Logistic Regression",
+        "accuracy": 0.9445,
+        "macro_precision": 0.9254,
+        "macro_recall": 0.9341,
+        "macro_F1": 0.9296,
+        "weighted_F1": 0.9448,
+        "LOW_precision": 0.9896,
+        "LOW_recall": 0.9731,
+        "LOW_F1": 0.9813,
+        "MODERATE_precision": 0.9361,
+        "MODERATE_recall": 0.933,
+        "MODERATE_F1": 0.9345,
+        "HIGH_precision": 0.8641,
+        "HIGH_recall": 0.8862,
+        "HIGH_F1": 0.875,
+        "FULL_precision": 0.9117,
+        "FULL_recall": 0.9441,
+        "FULL_F1": 0.9276,
+        "Walk-forward macro F1": 0.91962,
+        "Walk-forward macro F1 std": 0.00884,
+        "Selected": false
+      },
+      {
+        "Model": "Random Forest",
+        "accuracy": 0.9493,
+        "macro_precision": 0.934,
+        "macro_recall": 0.9367,
+        "macro_F1": 0.9353,
+        "weighted_F1": 0.9495,
+        "LOW_precision": 0.987,
+        "LOW_recall": 0.9795,
+        "LOW_F1": 0.9833,
+        "MODERATE_precision": 0.9413,
+        "MODERATE_recall": 0.9392,
+        "MODERATE_F1": 0.9403,
+        "HIGH_precision": 0.872,
+        "HIGH_recall": 0.8989,
+        "HIGH_F1": 0.8853,
+        "FULL_precision": 0.9354,
+        "FULL_recall": 0.9291,
+        "FULL_F1": 0.9322,
+        "Walk-forward macro F1": 0.93352,
+        "Walk-forward macro F1 std": 0.00216,
+        "Selected": false
+      },
+      {
+        "Model": "HistGradientBoosting",
+        "accuracy": 0.9488,
+        "macro_precision": 0.9326,
+        "macro_recall": 0.9351,
+        "macro_F1": 0.9338,
+        "weighted_F1": 0.9489,
+        "LOW_precision": 0.9867,
+        "LOW_recall": 0.9822,
+        "LOW_F1": 0.9844,
+        "MODERATE_precision": 0.9429,
+        "MODERATE_recall": 0.9375,
+        "MODERATE_F1": 0.9402,
+        "HIGH_precision": 0.8693,
+        "HIGH_recall": 0.8915,
+        "HIGH_F1": 0.8803,
+        "FULL_precision": 0.9316,
+        "FULL_recall": 0.9291,
+        "FULL_F1": 0.9303,
+        "Walk-forward macro F1": 0.93242,
+        "Walk-forward macro F1 std": 0.0025,
+        "Selected": false
+      },
+      {
+        "Model": "Thresholded HistGradientBoosting",
+        "accuracy": 0.9544,
+        "macro_precision": 0.9417,
+        "macro_recall": 0.9383,
+        "macro_F1": 0.9399,
+        "weighted_F1": 0.9544,
+        "LOW_precision": 0.983,
+        "LOW_recall": 0.9886,
+        "LOW_F1": 0.9858,
+        "MODERATE_precision": 0.952,
+        "MODERATE_recall": 0.9472,
+        "MODERATE_F1": 0.9496,
+        "HIGH_precision": 0.8853,
+        "HIGH_recall": 0.9032,
+        "HIGH_F1": 0.8942,
+        "FULL_precision": 0.9463,
+        "FULL_recall": 0.9141,
+        "FULL_F1": 0.9299,
+        "Walk-forward macro F1": 0.93951,
+        "Walk-forward macro F1 std": 0.00281,
+        "Selected": true
+      }
+    ],
+    "interval_test_coverage_90": 0.9016798418972332,
+    "interval_halfwidth_90_pp": 2.87,
+    "segments": {
+      "peak (12:00-15:00)": {
+        "n": 2536,
+        "selected_MAE_pp": 1.118455820462968,
+        "persistence_MAE_pp": 2.059835365783819,
+        "weekly_shape_MAE_pp": 1.5007252905400943
+      },
+      "off-peak": {
+        "n": 3536,
+        "selected_MAE_pp": 1.3692840706196854,
+        "persistence_MAE_pp": 4.826416015516478,
+        "weekly_shape_MAE_pp": 1.8563402435837855
+      },
+      "weekday": {
+        "n": 4426,
+        "selected_MAE_pp": 1.2037405514304962,
+        "persistence_MAE_pp": 3.80239418148171,
+        "weekly_shape_MAE_pp": 1.455544787565254
+      },
+      "weekend": {
+        "n": 1646,
+        "selected_MAE_pp": 1.4279688662052972,
+        "persistence_MAE_pp": 3.317468330046162,
+        "weekly_shape_MAE_pp": 2.3861586928056684
+      }
+    },
+    "per_park_best": [
+      "Others-CCCPS202",
+      "NIA Car Parks",
+      "Others-CCCPS119a"
+    ],
+    "per_park_worst": [
+      "BHMMBMMBX01",
+      "BHMBRCBRG01",
+      "BHMBCCPST01"
+    ],
+    "residual_mean_pp": 0.22164352058525655,
+    "residual_p95_abs_pp": 3.6983324552448127,
+    "confusion_matrices": {
+      "Persistence (baseline)": [
+        [
+          2606,
+          33,
+          0,
+          0
+        ],
+        [
+          240,
+          1398,
+          122,
+          0
+        ],
+        [
+          0,
+          165,
+          690,
+          85
+        ],
+        [
+          0,
+          7,
+          91,
+          635
+        ]
+      ],
+      "Thresholded HistGradientBoosting": [
+        [
+          2609,
+          30,
+          0,
+          0
+        ],
+        [
+          45,
+          1667,
+          47,
+          1
+        ],
+        [
+          0,
+          54,
+          849,
+          37
+        ],
+        [
+          0,
+          0,
+          63,
+          670
+        ]
+      ]
+    },
+    "full_missed": 63,
+    "full_missed_as_low_or_moderate": 0,
+    "full_actual": 733,
+    "false_full_alarms": 38,
+    "prediction_examples": [
+      {
+        "SystemCodeNumber": "BHMBRCBRG02",
+        "slot_time": "2016-12-12 11:00:00",
+        "target_time": "2016-12-12 11:30:00",
+        "capacity": "1194",
+        "rate_now": "0.5175879396984925",
+        "target_rate": "0.626465661641541",
+        "pred": "0.6250808802012547",
+        "target_status": "MODERATE",
+        "clf::Thresholded HistGradientBoosting": "MODERATE",
+        "error_pp": "0.1384781440286309",
+        "error_quantile": "10th pct"
+      },
+      {
+        "SystemCodeNumber": "NIA South",
+        "slot_time": "2016-12-14 15:30:00",
+        "target_time": "2016-12-14 16:00:00",
+        "capacity": "788",
+        "rate_now": "0.2373096446700507",
+        "target_rate": "0.2093908629441624",
+        "pred": "0.218188575611237",
+        "target_status": "LOW",
+        "clf::Thresholded HistGradientBoosting": "LOW",
+        "error_pp": "-0.8797712667074603",
+        "error_quantile": "median"
+      },
+      {
+        "SystemCodeNumber": "BHMNCPLDH01",
+        "slot_time": "2016-12-14 16:00:00",
+        "target_time": "2016-12-14 16:30:00",
+        "capacity": "720",
+        "rate_now": "0.7902777777777777",
+        "target_rate": "0.6666666666666666",
+        "pred": "0.6951259912122261",
+        "target_status": "MODERATE",
+        "clf::Thresholded HistGradientBoosting": "MODERATE",
+        "error_pp": "-2.845932454555944",
+        "error_quantile": "90th pct"
+      },
+      {
+        "SystemCodeNumber": "BHMBRCBRG01",
+        "slot_time": "2016-12-18 11:00:00",
+        "target_time": "2016-12-18 11:30:00",
+        "capacity": "1010",
+        "rate_now": "0.7079207920792079",
+        "target_rate": "0.996039603960396",
+        "pred": "0.9352712504343854",
+        "target_status": "FULL",
+        "clf::Thresholded HistGradientBoosting": "FULL",
+        "error_pp": "6.076835352601062",
+        "error_quantile": "99th pct"
+      }
+    ],
+    "permutation_importance": [
+      {
+        "feature": "rate_now",
+        "importance_MAE_increase_pp": 28.9456,
+        "std_pp": 0.1831
+      },
+      {
+        "feature": "origin_slot",
+        "importance_MAE_increase_pp": 1.1958,
+        "std_pp": 0.012
+      },
+      {
+        "feature": "rate_delta1",
+        "importance_MAE_increase_pp": 0.9274,
+        "std_pp": 0.0158
+      },
+      {
+        "feature": "park_code",
+        "importance_MAE_increase_pp": 0.4814,
+        "std_pp": 0.0117
+      },
+      {
+        "feature": "target_slot_rate_7d_ago",
+        "importance_MAE_increase_pp": 0.2978,
+        "std_pp": 0.0071
+      },
+      {
+        "feature": "rate_roll3_std",
+        "importance_MAE_increase_pp": 0.221,
+        "std_pp": 0.0038
+      },
+      {
+        "feature": "day_of_week",
+        "importance_MAE_increase_pp": 0.1754,
+        "std_pp": 0.0054
+      },
+      {
+        "feature": "now_slot_rate_7d_ago",
+        "importance_MAE_increase_pp": 0.1587,
+        "std_pp": 0.0114
+      },
+      {
+        "feature": "target_slot_rate_1d_ago",
+        "importance_MAE_increase_pp": 0.0762,
+        "std_pp": 0.0062
+      },
+      {
+        "feature": "rate_lag1",
+        "importance_MAE_increase_pp": 0.0744,
+        "std_pp": 0.0026
+      },
+      {
+        "feature": "rate_roll3_mean",
+        "importance_MAE_increase_pp": 0.0353,
+        "std_pp": 0.0017
+      },
+      {
+        "feature": "rate_lag2",
+        "importance_MAE_increase_pp": 0.0321,
+        "std_pp": 0.0048
+      },
+      {
+        "feature": "capacity",
+        "importance_MAE_increase_pp": 0.0004,
+        "std_pp": 0.001
+      },
+      {
+        "feature": "target_slot",
+        "importance_MAE_increase_pp": 0.0,
+        "std_pp": 0.0
+      },
+      {
+        "feature": "target_hour",
+        "importance_MAE_increase_pp": 0.0,
+        "std_pp": 0.0
+      },
+      {
+        "feature": "is_weekend",
+        "importance_MAE_increase_pp": -0.0,
+        "std_pp": 0.0
+      }
+    ],
+    "permutation_seconds": 10.0,
+    "selected_regressor": "HistGradientBoosting",
+    "selected_classifier": "Thresholded HistGradientBoosting"
+  },
+  "60": {
+    "figures": {
+      "error_by_hour": "outputs/figures/eval_error_by_hour_h60.png",
+      "per_park": "outputs/figures/eval_per_park_mae_h60.png",
+      "actual_vs_pred": "outputs/figures/eval_actual_vs_pred_h60.png",
+      "model_comparison": "outputs/figures/eval_model_comparison_h60.png",
+      "confusion": "outputs/figures/eval_confusion_h60.png",
+      "example_day": "outputs/figures/eval_example_day_h60.png",
+      "permutation_importance": "outputs/figures/eval_permutation_importance_h60.png"
+    },
+    "regression_table": [
+      {
+        "Model": "Persistence (baseline)",
+        "Test MAE (pp)": 7.0727,
+        "Test RMSE (pp)": 10.0648,
+        "Test R2": 0.852,
+        "Test MAE (spaces)": 97.2634,
+        "MAE vs persistence (%)": 0.0,
+        "Walk-forward MAE (pp)": 6.899,
+        "Walk-forward MAE std (pp)": 0.423,
+        "Validation MAE (pp)": 7.355,
+        "Fit time (s)": 0.0,
+        "Predict ms / 1000 rows": 0.006,
+        "Selected": false
+      },
+      {
+        "Model": "Historical profile (baseline)",
+        "Test MAE (pp)": 7.2373,
+        "Test RMSE (pp)": 9.9914,
+        "Test R2": 0.8542,
+        "Test MAE (spaces)": 101.7086,
+        "MAE vs persistence (%)": -2.3261,
+        "Walk-forward MAE (pp)": 6.503,
+        "Walk-forward MAE std (pp)": 1.135,
+        "Validation MAE (pp)": 7.597,
+        "Fit time (s)": 0.01,
+        "Predict ms / 1000 rows": 0.253,
+        "Selected": false
+      },
+      {
+        "Model": "Persistence + weekly shape (baseline)",
+        "Test MAE (pp)": 2.7874,
+        "Test RMSE (pp)": 4.8516,
+        "Test R2": 0.9656,
+        "Test MAE (spaces)": 34.4149,
+        "MAE vs persistence (%)": 60.5891,
+        "Walk-forward MAE (pp)": 2.258,
+        "Walk-forward MAE std (pp)": 0.242,
+        "Validation MAE (pp)": 2.468,
+        "Fit time (s)": 0.0,
+        "Predict ms / 1000 rows": 0.022,
+        "Selected": false
+      },
+      {
+        "Model": "Ridge Regression",
+        "Test MAE (pp)": 2.8265,
+        "Test RMSE (pp)": 4.1563,
+        "Test R2": 0.9748,
+        "Test MAE (spaces)": 35.3314,
+        "MAE vs persistence (%)": 60.0369,
+        "Walk-forward MAE (pp)": 2.637,
+        "Walk-forward MAE std (pp)": 0.153,
+        "Validation MAE (pp)": 2.683,
+        "Fit time (s)": 0.05,
+        "Predict ms / 1000 rows": 1.383,
+        "Selected": false
+      },
+      {
+        "Model": "Random Forest",
+        "Test MAE (pp)": 2.2876,
+        "Test RMSE (pp)": 3.4458,
+        "Test R2": 0.9827,
+        "Test MAE (spaces)": 27.8879,
+        "MAE vs persistence (%)": 67.6557,
+        "Walk-forward MAE (pp)": 2.236,
+        "Walk-forward MAE std (pp)": 0.115,
+        "Validation MAE (pp)": 2.269,
+        "Fit time (s)": 20.71,
+        "Predict ms / 1000 rows": 45.454,
+        "Selected": false
+      },
+      {
+        "Model": "HistGradientBoosting",
+        "Test MAE (pp)": 2.0209,
+        "Test RMSE (pp)": 2.9993,
+        "Test R2": 0.9869,
+        "Test MAE (spaces)": 24.6551,
+        "MAE vs persistence (%)": 71.4264,
+        "Walk-forward MAE (pp)": 2.055,
+        "Walk-forward MAE std (pp)": 0.189,
+        "Validation MAE (pp)": 2.113,
+        "Fit time (s)": 4.1,
+        "Predict ms / 1000 rows": 20.644,
+        "Selected": true
+      }
+    ],
+    "classification_table": [
+      {
+        "Model": "Majority class (baseline)",
+        "accuracy": 0.4079,
+        "macro_precision": 0.102,
+        "macro_recall": 0.25,
+        "macro_F1": 0.1449,
+        "weighted_F1": 0.2364,
+        "LOW_precision": 0.4079,
+        "LOW_recall": 1.0,
+        "LOW_F1": 0.5795,
+        "MODERATE_precision": 0.0,
+        "MODERATE_recall": 0.0,
+        "MODERATE_F1": 0.0,
+        "HIGH_precision": 0.0,
+        "HIGH_recall": 0.0,
+        "HIGH_F1": 0.0,
+        "FULL_precision": 0.0,
+        "FULL_recall": 0.0,
+        "FULL_F1": 0.0,
+        "Walk-forward macro F1": 0.16028,
+        "Walk-forward macro F1 std": 0.00859,
+        "Selected": false
+      },
+      {
+        "Model": "Persistence (baseline)",
+        "accuracy": 0.7695,
+        "macro_precision": 0.7382,
+        "macro_recall": 0.7188,
+        "macro_F1": 0.725,
+        "weighted_F1": 0.7606,
+        "LOW_precision": 0.8301,
+        "LOW_recall": 0.9791,
+        "LOW_F1": 0.8985,
+        "MODERATE_precision": 0.7467,
+        "MODERATE_recall": 0.6292,
+        "MODERATE_F1": 0.6829,
+        "HIGH_precision": 0.5978,
+        "HIGH_recall": 0.5258,
+        "HIGH_F1": 0.5595,
+        "FULL_precision": 0.7783,
+        "FULL_recall": 0.7411,
+        "FULL_F1": 0.7592,
+        "Walk-forward macro F1": 0.71655,
+        "Walk-forward macro F1 std": 0.01081,
+        "Selected": false
+      },
+      {
+        "Model": "Logistic Regression",
+        "accuracy": 0.9038,
+        "macro_precision": 0.8808,
+        "macro_recall": 0.8892,
+        "macro_F1": 0.8847,
+        "weighted_F1": 0.9045,
+        "LOW_precision": 0.9739,
+        "LOW_recall": 0.9564,
+        "LOW_F1": 0.9651,
+        "MODERATE_precision": 0.8942,
+        "MODERATE_recall": 0.8777,
+        "MODERATE_F1": 0.8859,
+        "HIGH_precision": 0.7763,
+        "HIGH_recall": 0.8247,
+        "HIGH_F1": 0.7998,
+        "FULL_precision": 0.8787,
+        "FULL_recall": 0.8978,
+        "FULL_F1": 0.8881,
+        "Walk-forward macro F1": 0.87349,
+        "Walk-forward macro F1 std": 0.00927,
+        "Selected": false
+      },
+      {
+        "Model": "Random Forest",
+        "accuracy": 0.9172,
+        "macro_precision": 0.8997,
+        "macro_recall": 0.8986,
+        "macro_F1": 0.8987,
+        "weighted_F1": 0.9176,
+        "LOW_precision": 0.9702,
+        "LOW_recall": 0.9731,
+        "LOW_F1": 0.9716,
+        "MODERATE_precision": 0.915,
+        "MODERATE_recall": 0.8945,
+        "MODERATE_F1": 0.9046,
+        "HIGH_precision": 0.7966,
+        "HIGH_recall": 0.8548,
+        "HIGH_F1": 0.8247,
+        "FULL_precision": 0.9169,
+        "FULL_recall": 0.8719,
+        "FULL_F1": 0.8939,
+        "Walk-forward macro F1": 0.89727,
+        "Walk-forward macro F1 std": 0.00676,
+        "Selected": false
+      },
+      {
+        "Model": "HistGradientBoosting",
+        "accuracy": 0.9158,
+        "macro_precision": 0.8985,
+        "macro_recall": 0.8947,
+        "macro_F1": 0.8965,
+        "weighted_F1": 0.9156,
+        "LOW_precision": 0.9607,
+        "LOW_recall": 0.9804,
+        "LOW_F1": 0.9704,
+        "MODERATE_precision": 0.9133,
+        "MODERATE_recall": 0.8927,
+        "MODERATE_F1": 0.9029,
+        "HIGH_precision": 0.8136,
+        "HIGH_recall": 0.8215,
+        "HIGH_F1": 0.8175,
+        "FULL_precision": 0.9064,
+        "FULL_recall": 0.8842,
+        "FULL_F1": 0.8952,
+        "Walk-forward macro F1": 0.88968,
+        "Walk-forward macro F1 std": 0.00662,
+        "Selected": false
+      },
+      {
+        "Model": "Thresholded HistGradientBoosting",
+        "accuracy": 0.9315,
+        "macro_precision": 0.9191,
+        "macro_recall": 0.9115,
+        "macro_F1": 0.9151,
+        "weighted_F1": 0.9313,
+        "LOW_precision": 0.9645,
+        "LOW_recall": 0.985,
+        "LOW_F1": 0.9746,
+        "MODERATE_precision": 0.931,
+        "MODERATE_recall": 0.9175,
+        "MODERATE_F1": 0.9242,
+        "HIGH_precision": 0.8488,
+        "HIGH_recall": 0.8634,
+        "HIGH_F1": 0.8561,
+        "FULL_precision": 0.9322,
+        "FULL_recall": 0.8801,
+        "FULL_F1": 0.9054,
+        "Walk-forward macro F1": 0.90071,
+        "Walk-forward macro F1 std": 0.00297,
+        "Selected": true
+      }
+    ],
+    "interval_test_coverage_90": 0.9005053145147238,
+    "interval_halfwidth_90_pp": 4.4990000000000006,
+    "segments": {
+      "peak (12:00-15:00)": {
+        "n": 2508,
+        "selected_MAE_pp": 1.802984150977461,
+        "persistence_MAE_pp": 4.059929352479708,
+        "weekly_shape_MAE_pp": 2.4846330106405623
+      },
+      "off-peak": {
+        "n": 3231,
+        "selected_MAE_pp": 2.1901197171168825,
+        "persistence_MAE_pp": 9.411377923069196,
+        "weekly_shape_MAE_pp": 3.022469199518331
+      },
+      "weekday": {
+        "n": 4181,
+        "selected_MAE_pp": 1.8440633639373507,
+        "persistence_MAE_pp": 7.258283953382846,
+        "weekly_shape_MAE_pp": 2.1772561670080943
+      },
+      "weekend": {
+        "n": 1558,
+        "selected_MAE_pp": 2.4955918690847607,
+        "persistence_MAE_pp": 6.574826493172018,
+        "weekly_shape_MAE_pp": 4.424871335089485
+      }
+    },
+    "per_park_best": [
+      "NIA Car Parks",
+      "Others-CCCPS202",
+      "Others-CCCPS119a"
+    ],
+    "per_park_worst": [
+      "BHMMBMMBX01",
+      "BHMBRCBRG01",
+      "BHMBCCPST01"
+    ],
+    "residual_mean_pp": 0.4713336477291853,
+    "residual_p95_abs_pp": 5.969370833777426,
+    "confusion_matrices": {
+      "Persistence (baseline)": [
+        [
+          2292,
+          49,
+          0,
+          0
+        ],
+        [
+          456,
+          1091,
+          180,
+          7
+        ],
+        [
+          9,
+          284,
+          489,
+          148
+        ],
+        [
+          4,
+          37,
+          149,
+          544
+        ]
+      ],
+      "Thresholded HistGradientBoosting": [
+        [
+          2306,
+          35,
+          0,
+          0
+        ],
+        [
+          85,
+          1591,
+          57,
+          1
+        ],
+        [
+          0,
+          81,
+          803,
+          46
+        ],
+        [
+          0,
+          2,
+          86,
+          646
+        ]
+      ]
+    },
+    "full_missed": 88,
+    "full_missed_as_low_or_moderate": 2,
+    "full_actual": 734,
+    "false_full_alarms": 47,
+    "prediction_examples": [
+      {
+        "SystemCodeNumber": "BHMBCCTHL01",
+        "slot_time": "2016-12-13 09:00:00",
+        "target_time": "2016-12-13 10:00:00",
+        "capacity": "387",
+        "rate_now": "0.6330749354005168",
+        "target_rate": "0.8165374677002584",
+        "pred": "0.8187154246460722",
+        "target_status": "HIGH",
+        "clf::Thresholded HistGradientBoosting": "HIGH",
+        "error_pp": "-0.2177956945813797",
+        "error_quantile": "10th pct"
+      },
+      {
+        "SystemCodeNumber": "BHMEURBRD01",
+        "slot_time": "2016-12-14 12:00:00",
+        "target_time": "2016-12-14 13:00:00",
+        "capacity": "470",
+        "rate_now": "0.9319148936170212",
+        "target_rate": "0.9404255319148936",
+        "pred": "0.9542714377394156",
+        "target_status": "FULL",
+        "clf::Thresholded HistGradientBoosting": "FULL",
+        "error_pp": "-1.3845905824521942",
+        "error_quantile": "median"
+      },
+      {
+        "SystemCodeNumber": "Others-CCCPS105a",
+        "slot_time": "2016-12-15 12:00:00",
+        "target_time": "2016-12-15 13:00:00",
+        "capacity": "2009",
+        "rate_now": "0.7048282727725237",
+        "target_rate": "0.7720258835241414",
+        "pred": "0.7272175883823356",
+        "target_status": "HIGH",
+        "clf::Thresholded HistGradientBoosting": "MODERATE",
+        "error_pp": "4.480829514180574",
+        "error_quantile": "90th pct"
+      },
+      {
+        "SystemCodeNumber": "BHMBCCSNH01",
+        "slot_time": "2016-12-11 10:30:00",
+        "target_time": "2016-12-11 11:30:00",
+        "capacity": "863",
+        "rate_now": "0.4298957126303592",
+        "target_rate": "0.6593279258400927",
+        "pred": "0.5582830701364564",
+        "target_status": "MODERATE",
+        "clf::Thresholded HistGradientBoosting": "MODERATE",
+        "error_pp": "10.10448557036363",
+        "error_quantile": "99th pct"
+      }
+    ],
+    "permutation_importance": [
+      {
+        "feature": "rate_now",
+        "importance_MAE_increase_pp": 25.3865,
+        "std_pp": 0.1732
+      },
+      {
+        "feature": "origin_slot",
+        "importance_MAE_increase_pp": 2.1614,
+        "std_pp": 0.018
+      },
+      {
+        "feature": "rate_delta1",
+        "importance_MAE_increase_pp": 1.6347,
+        "std_pp": 0.0122
+      },
+      {
+        "feature": "park_code",
+        "importance_MAE_increase_pp": 1.0678,
+        "std_pp": 0.0112
+      },
+      {
+        "feature": "target_slot_rate_7d_ago",
+        "importance_MAE_increase_pp": 1.0112,
+        "std_pp": 0.017
+      },
+      {
+        "feature": "day_of_week",
+        "importance_MAE_increase_pp": 0.4886,
+        "std_pp": 0.0157
+      },
+      {
+        "feature": "now_slot_rate_7d_ago",
+        "importance_MAE_increase_pp": 0.3687,
+        "std_pp": 0.012
+      },
+      {
+        "feature": "rate_roll3_std",
+        "importance_MAE_increase_pp": 0.3329,
+        "std_pp": 0.0085
+      },
+      {
+        "feature": "target_slot_rate_1d_ago",
+        "importance_MAE_increase_pp": 0.2078,
+        "std_pp": 0.0099
+      },
+      {
+        "feature": "rate_lag1",
+        "importance_MAE_increase_pp": 0.1484,
+        "std_pp": 0.0049
+      },
+      {
+        "feature": "rate_roll3_mean",
+        "importance_MAE_increase_pp": 0.0883,
+        "std_pp": 0.0078
+      },
+      {
+        "feature": "rate_lag2",
+        "importance_MAE_increase_pp": 0.0384,
+        "std_pp": 0.0026
+      },
+      {
+        "feature": "capacity",
+        "importance_MAE_increase_pp": 0.0005,
+        "std_pp": 0.0011
+      },
+      {
+        "feature": "is_weekend",
+        "importance_MAE_increase_pp": 0.0,
+        "std_pp": 0.0
+      },
+      {
+        "feature": "target_slot",
+        "importance_MAE_increase_pp": 0.0,
+        "std_pp": 0.0
+      },
+      {
+        "feature": "target_hour",
+        "importance_MAE_increase_pp": 0.0,
+        "std_pp": 0.0
+      }
+    ],
+    "permutation_seconds": 9.0,
+    "selected_regressor": "HistGradientBoosting",
+    "selected_classifier": "Thresholded HistGradientBoosting"
+  },
+  "unseen_park_experiment": {
+    "horizon_minutes": 60,
+    "model": "HistGradientBoosting",
+    "n_test_rows": 5739,
+    "unseen_park_MAE_pp": 2.7331545258557495,
+    "seen_park_MAE_pp": 2.0209376296665136,
+    "persistence_MAE_pp": 7.072741746899404
+  }
+}
