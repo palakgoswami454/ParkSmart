@@ -1,5 +1,5 @@
 ---
-title: "ParkSmart: ML-Based Parking Occupancy Prediction and Availability System"
+title: "ParkSmart: ML-Based Parking Occupancy Prediction and a Pune Parking Decision-Support System"
 subtitle: "Applications and Use Cases of Machine Learning (TE7483) — End-Semester Case Study Project"
 author: "B.Tech Artificial Intelligence and Machine Learning, Batch 2024–2028, Semester 5 — Symbiosis Institute of Technology, Pune"
 date: "October 2026"
@@ -8,9 +8,11 @@ date: "October 2026"
 **Student:** _(your name, PRN)_ **Faculty:** Dr. Aniket Shahade, Dr. Shrikishna Kolhar, Dr. Sumanto Dutta
 **Code and data:** https://github.com/palakgoswami454/parksmart
 
+**Version note.** This report covers ParkSmart 2.0. The ML experiment (Sections 6–14) is unchanged from version 1 except for the time-of-day uncertainty ranges and the transfer model. Section 15 describes the Pune directory and application added in version 2.
+
 # Abstract
 
-Drivers choose a car park based on how full it is now, but they arrive 30–60 minutes later. ParkSmart forecasts, for 28 Birmingham car parks, the occupancy rate 30 and 60 minutes ahead, converts it into expected free spaces using each car park's known capacity, and classifies the expected status as LOW, MODERATE, HIGH or FULL. We use the public UCI *Parking Birmingham* dataset (35,717 readings, 4 Oct – 19 Dec 2016), regularise it onto a 30-minute grid without interpolating missing values, and engineer 16 leakage-safe features (current level, recent trend, time of day, weekday, car-park identity and last week's pattern). Models were tuned on a validation fortnight, selected by four-fold walk-forward validation and reported once on an untouched final fortnight. Three baselines (persistence, historical profile, and a strong "persistence + last week's shape" rule) were compared with Ridge Regression, Random Forest and HistGradientBoosting. HistGradientBoosting was best at both horizons: at 60 minutes its test MAE is 2.02 percentage points (≈ 25 spaces), 71% lower than persistence and 27% lower than the strongest rule; at 30 minutes it is 1.26 pp. Thresholding its forecast gave the best status classifier (60 min: accuracy 0.932, macro-F1 0.915, FULL recall 0.880). A ±4.5 pp range derived from walk-forward residuals covered 90.1% of test outcomes. The model also transfers to car parks it never saw (MAE 2.73 pp). A five-page Streamlit application replays the data, shows the forecast next to what actually happened, and is explicit that it is not a live system.
+Drivers choose a car park based on how full it is now, but they arrive 30–60 minutes later. ParkSmart forecasts, for 28 Birmingham car parks, the occupancy rate 30 and 60 minutes ahead, converts it into expected free spaces using each car park's known capacity, and classifies the expected status as LOW, MODERATE, HIGH or FULL. We use the public UCI *Parking Birmingham* dataset (35,717 readings, 4 Oct – 19 Dec 2016), regularise it onto a 30-minute grid without interpolating missing values, and engineer 16 leakage-safe features (current level, recent trend, time of day, weekday, car-park identity and last week's pattern). Models were tuned on a validation fortnight, selected by four-fold walk-forward validation and reported once on an untouched final fortnight. Three baselines (persistence, historical profile, and a strong "persistence + last week's shape" rule) were compared with Ridge Regression, Random Forest and HistGradientBoosting. HistGradientBoosting was best at both horizons: at 60 minutes its test MAE is 2.02 percentage points (≈ 25 spaces), 71% lower than persistence and 27% lower than the strongest rule; at 30 minutes it is 1.26 pp. Thresholding its forecast gave the best status classifier (60 min: accuracy 0.932, macro-F1 0.915, FULL recall 0.880). Split-conformal 90% ranges with one width per time-of-day band covered 89.8% of test outcomes, with more even coverage across the day than a single width. A park-agnostic version transfers to car parks it never saw (MAE 2.73 pp in car-park cross-validation). Because no public occupancy data exists for Pune, the application (ParkSmart 2.0) pairs the model with a sourced Pune parking directory of 19 facilities and a transparent recommendation assistant. It never attaches a forecast to a Pune facility; instead it offers a test-on-your-own-data tool that shows forecasts only if the model beats persistence on the uploaded counts.
 
 # 1. Introduction and background
 
@@ -239,7 +241,14 @@ At 30 minutes the thresholded regressor again had the best macro-F1 (0.940; accu
 
 **Cost-sensitive view.** Of 734 test cases that were really FULL 60 minutes later, the selected classifier labelled 646 FULL, 86 HIGH and only 2 MODERATE/LOW. Missing a FULL car park sends a driver into a queue; a false FULL warning (47 cases) merely suggests an alternative. Predicting HIGH for a FULL car park is a much milder error than predicting LOW.
 
-**Uncertainty.** The 90% range is ± the 90th percentile of absolute out-of-fold walk-forward residuals: ±4.50 pp (60 min) and ±2.87 pp (30 min). On the test fortnight, which the range never saw, it covered **90.1%** and **90.2%** of outcomes respectively — it is well calibrated.
+**Uncertainty.** The 90% range is split-conformal: ± a quantile of absolute out-of-fold walk-forward residuals, each from a model trained only on earlier weeks. A single width (±4.50 pp at 60 min, ±2.87 pp at 30 min) covered 90.1% and 90.2% of test outcomes overall, but unevenly: 86.4% for 11:00–12:30 targets and 93.0% for 13:00–14:30 (60 min). ParkSmart therefore uses one width per time-of-day band ("Mondrian" conformal). At 60 min the bands are ±5.19 pp (08:30–10:30), ±4.72 (11:00–12:30), ±3.99 (13:00–14:30) and ±4.13 (15:00–16:30). Test coverage is 89.8% overall and 87.6–90.9% per band; at 30 min it is 90.2% overall and 89.1–91.2% per band.
+
+| Target-time band (60 min) | Half-width | Coverage, one width | Coverage, by band |
+|---|---|---|---|
+| 08:30–10:30 | ±5.19 pp | 88.1% | 90.9% |
+| 11:00–12:30 | ±4.72 pp | 86.4% | 87.6% |
+| 13:00–14:30 | ±3.99 pp | 93.0% | 90.0% |
+| 15:00–16:30 | ±4.13 pp | 92.6% | 90.5% |
 
 **Efficiency.** Final HistGradientBoosting fit ≈ 4 s; prediction ≈ 21 ms per 1,000 rows (60 min), i.e. well under a millisecond per car park. Random Forest took ≈ 21 s to fit and predicts about twice as slowly.
 
@@ -276,37 +285,72 @@ The 99th-percentile error is a pre-Christmas Sunday-morning surge: occupancy ros
 
 *Figure 15.* Permutation importance (increase in test MAE when a feature is shuffled). `rate_now` dominates (+25.4 pp), followed by `origin_slot` (+2.16), `rate_delta1` (+1.63), `park_code` (+1.07) and `target_slot_rate_7d_ago` (+1.01). `target_slot` and `target_hour` show ≈ 0 only because `origin_slot` carries the same information (target = origin + 2) — shuffling one of a set of correlated features underestimates it. Importance describes what the model relies on, not what causes demand.
 
-**Generalisation to unseen car parks.** In a 5-fold GroupKFold over car parks, with the car-park ID removed, models trained on the other car parks reached a test MAE of **2.73 pp** on the held-out ones, versus 2.02 pp for known car parks and 7.07 pp for persistence. The model therefore learns transferable dynamics, and could be applied to a newly instrumented car park with modest loss of accuracy.
+**Generalisation to unseen car parks.** In a 5-fold GroupKFold over car parks, with the car-park ID removed, models trained on the other car parks reached a test MAE of **2.73 pp** on the held-out ones, versus 2.02 pp for known car parks and 7.07 pp for persistence. The model therefore learns transferable dynamics.
 
-# 15. Application architecture
+**Transfer model.** `src/transfer.py` trains this park-agnostic model on 27 car parks and keeps one (Others-CCCPS8) out entirely. On that car park it scores 1.75 pp at 60 min (persistence 5.28 pp) and 1.10 pp at 30 min (persistence 2.69 pp); its range comes from car-park-level cross-validation and covered 97.7% (conservative). The held-out car park shares the city and period of the training data, so this is easier than a new city would be. It justifies *testing* the model on Pune counts, not using it unchecked.
+
+# 15. ParkSmart 2.0: Pune focus and application
+
+## 15.1 Pune data: what exists
+
+The application is meant for Pune. A search in October 2026 covered the PMC open-data portal, data.gov.in, OpenCity, dataset sites and news. It found **no public historical or live occupancy data for any Pune car park**. (The data.gov.in catalog "Parking lots: Pune" exists but blocks automated access.) A Pune occupancy model therefore cannot be trained or validated. Applying the Birmingham model to Pune facilities would require inventing its inputs (the current count, recent lags, last week's values), so ParkSmart does not do it.
+
+What *can* be documented was collected into `data/pune/` (19 facilities, 16 destinations, 11 dated policy items, 40 sources):
+
+* **Metro-station parking.** Pune Metro announced lots at nine stations on 15 Feb 2024, with rates of ₹15/30/60 for two-wheelers and ₹35/50/80 for cars for up to 2 h / 2–6 h / over 6 h. No confirmation of opening was found. A Dec 2024 report says most stations lack parking and Swargate users park on the street. A Sep 2025 report says no parking will be provided in the PCMC area. These lots are labelled *announced* or *conflicting*.
+* **Pune station.** The Central Railway register (15 Jul 2025) lists three pay-and-park sites with areas and contract dates, all of which ended by Dec 2025 (*contract period ended*).
+* **Airport.** Multi-level car park for 1,000 cars and 1,000 two-wheelers, reported opening Oct 2022. A 15-minute terminal-area limit has applied since Jun 2026.
+* **Camp.** Pune Cantonment Board lots at MG Road and Fashion Street with rates confirmed by the Board's CEO (Jul 2026).
+* **Municipal.** Two lots known only from third-party directories, and one non-operational multi-level structure.
+* **Policy.** PMC Public Parking Policy 2016 (zone-based rates), Mar 2026 on-street pilot tender (FC Road, JM Road, Laxmi Road, Viman Nagar, Balewadi High Street, Bibvewadi) and the Sep 2026 proposed zone rates.
+
+Every fact cites a dated source. Coordinates come from the cited station, landmark or listing. Wikipedia locality coordinates for Kothrud, Aundh and Pune Camp were several kilometres wrong when checked against nearby stations, so they were rejected. `src/data_loader.py` refuses to load the directory if a fact lacks a source, a coordinate falls outside Pune, or a status or tariff is malformed.
+
+## 15.2 Decision support
+
+*Find parking* ranks facilities for a destination by **score = 0.6 × proximity + 0.4 × evidence**. Proximity is 1 − straight-line distance ÷ radius. Evidence is 0.90 for reported operational, 0.70 for private venue, 0.50 for contract ended, 0.40 for announced, 0.35 for directory listing and 0.20 for conflicting. A facility is excluded only for a known reason: non-operational or restricted, a vehicle type its sources don't list, a published price over the budget, or distance beyond the radius. Unknown price, capacity or hours are reported under *still unknown*, never treated as zero or as a pass. The cost of the stay is computed from the published band tariffs. Distances are straight-line and labelled as such; no routing service is used.
+
+## 15.3 Bringing the model to Pune with evidence
+
+The *Test on your own data* tool accepts occupancy counts in a simple CSV (facility, capacity, occupied, timestamp). It cleans and grids them with the same code as the Birmingham pipeline and runs the park-agnostic model. It reports the model's error against persistence on those counts and shows forecasts **only if the model wins**. This is the route by which a Pune operator's data could justify Pune forecasts.
+
+## 15.4 Architecture
 
 ```
-data/raw/dataset.csv ─► src/data_preprocessing.py ─► data/processed/parking_30min.csv
-                                   │
-src/feature_engineering.py ◄───────┘
-        │                         src/models.py (baselines + candidates)
-        ├──► src/train.py ─► models/parksmart_h{30,60}.joblib, outputs/predictions
-        ├──► src/evaluate.py ─► outputs/metrics/*.json|csv, outputs/figures/*.png
-        └──► src/predict.py (load bundle, inference table, forecast) ─► app.py (Streamlit)
+data/pune/*.json ─► src/data_loader.py (validate) ─► src/location_services.py, src/recommendations.py ─┐
+data/raw/dataset.csv ─► src/data_preprocessing.py ─► src/feature_engineering.py ─► src/train.py ─────┤
+        src/intervals.py (time-band ranges) · src/evaluate.py · src/transfer.py · src/predict.py ────────┤
+                                                                     src/ui.py, src/visualizations.py ┘
+                                                                     app.py + pages/ (7 pages)
 ```
 
-The UI never trains or hard-codes results: it loads the saved bundles and metrics files, and shows an actionable error message (with the commands to run) if any file is missing. Pages: Overview, Parking availability, Forecasting, Model performance, Insights.
+Pages: Overview, Explore parking, Find parking, City insights (Pune); Occupancy forecast, Model performance (Birmingham-trained model, labelled "This is not Pune data"); Data sources. The UI never trains or hard-codes results. Light and dark palettes are defined in Streamlit's theme configuration; charts are theme-aware Plotly; fonts are bundled, and an offline map mode keeps the app usable without internet. The app was tested with 40 automated checks, including every page and the Find parking form end-to-end.
 
-![](screenshots/01_overview.png)
+![](screenshots/01_overview_light.png)
 
-![](screenshots/02_availability.png)
+*Figure 16.* Overview: destination search, directory metrics, facility map coloured by evidence (not by occupancy), and the "what's live, historical, missing" panel. The screenshots use the offline map background because the build machine could not load map tiles.
 
-*Figure 16.* The availability page: the dark "car-park sign" shows expected free spaces 60 minutes ahead (19 of 690 at Broad Street, 12:00 on 6 Dec), the status, the calculation, the 90% range, and — because this is a replay — the actual outcome (+0.4 pp error). A ranked table of all car parks at the same moment suggests alternatives.
+![](screenshots/03_find_parking_light.png)
 
-![](screenshots/03_forecasting.png)
+*Figure 17.* Find parking for FC Road by car, 2 h. Options are ranked with their score breakdown and stay cost; the dated note about the planned FC Road pay-and-park pilot is shown, and the page states that no Pune occupancy data exists.
 
-![](screenshots/04_model_performance.png)
+![](screenshots/02_explore_dark.png)
 
-![](screenshots/05_insights.png)
+*Figure 18.* Explore parking (dark mode): filters, map and the airport car park's detail card with capacity, sources, and an explicit "occupancy forecast: not available" panel.
+
+![](screenshots/05_forecast_light.png)
+
+*Figure 19.* Occupancy forecast (Birmingham replay): 19 of 690 spaces expected free at Broad Street at 12:00 on 6 Dec 2016; the actual occupancy was 97.5% (forecast error +0.4 pp).
+
+![](screenshots/06_model_performance_dark.png)
+
+*Figure 20.* Model performance (dark mode), built from the saved evaluation outputs.
 
 # 16. Practical use cases and decision support
 
-* **Drivers:** demand peaks at 14:00 and is within three points of the peak from 12:30 to 15:00; arriving before 12:30 or choosing a car park forecast LOW/MODERATE avoids queues. Car parks with the most room on average: NIA Car Parks, Others-CCCPS119a, BHMNCPPLS01, NIA South.
+* **Pune drivers (2.0):** choose a destination, see documented options ranked by distance and evidence, the price of the stay where tariffs are published, and what to check on arrival. ParkSmart does not promise a free space.
+* **Pune operators and PMC:** the transfer tool shows what an occupancy feed would unlock; the City insights page shows the gap between announced and confirmed metro parking.
+* **Drivers (Birmingham replay):** demand peaks at 14:00 and is within three points of the peak from 12:30 to 15:00; arriving before 12:30 or choosing a car park forecast LOW/MODERATE avoids queues. Car parks with the most room on average: NIA Car Parks, Others-CCCPS119a, BHMNCPPLS01, NIA South.
 * **Operators:** a 60-minute forecast accurate to ≈ 25 spaces on average is enough to switch FULL signs or open overflow decks before queues form; the 90% range tells them how much margin to keep. Car parks that are FULL in 26–30% of slots (BHMBRCBRG01, BHMNCPNHS01, BHMBCCTHL01) are candidates for pricing or capacity measures.
 * **City:** network-wide forecasts allow guidance signs to direct drivers to car parks that will have space, not just ones that have space now.
 
@@ -317,20 +361,21 @@ The UI never trains or hard-codes results: it loads the saved bundles and metric
 * **Missing context.** No events, weather, prices or roadworks; sudden surges (Section 14, 99th-percentile example) cannot be anticipated.
 * **Sensor dependence.** A forecast needs a current reading; 5% of slots are missing and some car parks drop out for days.
 * **Operating hours.** Only 08:00–16:30 is covered.
+* **Pune coverage.** No Pune occupancy data; the directory is small and dated, and metro-lot status is uncertain. Pune forecasts are deliberately not shown.
 * **Ethics.** The data are aggregate counts with no personal information. Risks are mainly of over-reliance: a wrong "space available" message could send many drivers to the same car park. ParkSmart mitigates this by labelling every number as an estimate, showing an uncertainty range and never presenting forecasts as live counts. If deployed, forecast-driven redirection should be monitored for feedback effects.
 
 # 18. Conclusion
 
-ParkSmart shows that short-horizon car-park occupancy can be forecast accurately from a small public dataset with careful, leakage-free feature engineering and standard tabular ML. HistGradientBoosting reduced 60-minute error from 7.07 pp (persistence) to 2.02 pp (≈ 25 spaces), beat a strong hand-crafted rule by 27%, produced the best status classification by thresholding, and came with a calibrated 90% range. Comparing against that strong rule was important: a linear model did not beat it, so the gains come from learning non-linear interactions rather than from ML per se. The Streamlit application turns these forecasts into decisions while being explicit about what is predicted and what is not.
+ParkSmart shows that short-horizon car-park occupancy can be forecast accurately from a small public dataset with careful, leakage-free feature engineering and standard tabular ML. HistGradientBoosting reduced 60-minute error from 7.07 pp (persistence) to 2.02 pp (≈ 25 spaces), beat a strong hand-crafted rule by 27%, produced the best status classification by thresholding, and came with a calibrated 90% range. Comparing against that strong rule was important: a linear model did not beat it, so the gains come from learning non-linear interactions rather than from ML per se. ParkSmart 2.0 takes this to Pune honestly: a sourced directory and transparent assistant for the decisions that can be supported today, and a measured path (the transfer check) for adding forecasts once Pune occupancy data exists. The application is explicit about what is documented, predicted, historical and unavailable.
 
 # 19. Future scope
 
 1. Connect a live open-data feed and re-train on a full year, including holidays and events.
 2. Add event calendars, weather and retail-season indicators to capture surges.
-3. Quantile gradient boosting or conformalised quantile regression for ranges that widen when uncertainty is higher (e.g., mornings).
+3. Conformalised quantile regression for ranges that adapt to each forecast, beyond the time-of-day bands now used.
 4. Multi-horizon and full-day forecasts (recursive or direct strategies).
 5. Compare with sequence models (LSTM/Temporal Fusion Transformer) once more data is available, as in Camero et al. (2019).
-6. Apply to newer open datasets (e.g., Moscow half-hourly occupancy) and to Indian cities such as Pune when data becomes available.
+6. Obtain Pune occupancy counts (PMC, Pune Metro occupancy boards, or the data.gov.in 'Parking lots: Pune' catalog) and validate the transfer model on them; extend the directory with verified PMC lots.
 7. Route-aware recommendations combining forecasts with travel time.
 
 # 20. References
@@ -345,6 +390,7 @@ ParkSmart shows that short-horizon car-park occupancy can be forecast accurately
 8. Friedman, J. H. (2001). Greedy function approximation: A gradient boosting machine. *The Annals of Statistics, 29*(5), 1189–1232. https://doi.org/10.1214/aos/1013203451
 9. Pedregosa, F., et al. (2011). Scikit-learn: Machine learning in Python. *Journal of Machine Learning Research, 12*, 2825–2830.
 10. Hyndman, R. J., & Athanasopoulos, G. (2021). *Forecasting: Principles and Practice* (3rd ed.). OTexts. https://otexts.com/fpp3/ (time-series cross-validation)
+11. Pune parking sources (Pune Metro release via Republic World and Punekar News, 15 Feb 2024; Punekar News 17 Dec 2024, 8 Mar 2026, 30 Jul 2026, 22 Sep 2026; Free Press Journal 27 Sep 2025, 12 Jun 2026; Central Railway Pune Division Pay & Park register 15 Jul 2025; PMC Public Parking Policy 2016; Navbharat Live 16 Jun 2026), all listed with links in `data/pune/sources.json`.
 
 # Appendix A. Reproducing every result
 
@@ -355,8 +401,9 @@ pip install -r requirements.txt
 python -m src.data_preprocessing   # 30-min grid + data_quality_report.json
 python -m src.eda                  # EDA figures + eda_summary.json
 python -m src.train                # ~15 min on 2 cores: tuning, walk-forward, saved models
-python -m src.evaluate             # test metrics, figures, importance, unseen-park test
-pytest -q                          # 11 checks incl. leakage and "reported = recomputed"
+python -m src.evaluate             # test metrics, figures, importance, unseen-park test, band coverage
+python -m src.transfer             # park-agnostic model, held-out check, sample upload file
+pytest -q                          # 40 checks incl. leakage, "reported = recomputed", Pune directory, pages
 streamlit run app.py
 ```
 
@@ -365,5 +412,6 @@ streamlit run app.py
 * **Target construction** (`src/feature_engineering.py`): `target_rate = groupby([park, date]).occupancy_rate.shift(-h)`; rows whose target slot is beyond 16:30 or unobserved are dropped for training.
 * **Weekly-shape baseline** (`src/models.py`): `rate_now + (rate_7d_ago[target] − rate_7d_ago[origin])`, falling back to persistence when last week is missing.
 * **Availability** (`src/predict.py`): `occupied = round(rate × capacity)`, `free = max(0, capacity − occupied)`; range bounds clipped to [0, 1].
-* **Interval**: half-width = 90th percentile of |out-of-fold walk-forward residuals| of the selected model (12,049 residuals at 60 min).
+* **Interval** (`src/intervals.py`): per time-of-day band, half-width = the ⌈(n+1)·0.9⌉/n empirical quantile of |out-of-fold walk-forward residuals| of the selected model (12,049 residuals at 60 min).
+* **Recommendation** (`src/recommendations.py`): score = 0.6 × max(0, 1 − d/radius) + 0.4 × evidence; tariff bands priced with `tariff_cost`.
 * **Saved bundle**: regressor, classifier, feature list, park-code map, capacities, interval half-widths, training period and scikit-learn version.

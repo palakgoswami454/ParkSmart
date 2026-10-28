@@ -1,4 +1,4 @@
-# ParkSmart — viva preparation (40 questions)
+# ParkSmart — viva preparation (50 questions)
 
 Numbers refer to the 60-minute horizon unless stated; all come from `outputs/metrics/`.
 
@@ -149,3 +149,35 @@ That a space will actually be free: it is an estimate with ~25-space average err
 * *"Why didn't you tune on the test set?"* — Then the test score would no longer estimate performance on unseen data.
 * *"What happens if a car park's sensor fails?"* — No current reading → no forecast; the app says so instead of guessing.
 * *"How would you deploy it?"* — Pull the council feed every 30 min, append to the grid, compute features, predict with the saved bundle, re-train weekly, monitor coverage of the 90% range as a drift alarm.
+
+## K. ParkSmart 2.0 — Pune focus
+
+**41. Your model is trained on Birmingham. How is this a Pune project?**
+No public occupancy data exists for any Pune car park (PMC open data, data.gov.in, OpenCity, dataset sites and news were searched). So ParkSmart splits the problem. For Pune it provides what can be documented: a sourced directory of 19 facilities, a transparent recommendation assistant, and dated policy context. Forecasting is developed and evaluated rigorously where data exists (Birmingham). Then a transfer test decides whether it can be used on Pune counts once they exist. Showing Birmingham-trained forecasts for Pune facilities would be fabrication.
+
+**42. Why not just run the model on Pune facilities anyway?**
+Its inputs are the facility's *current* occupancy, recent lags and last week's values. For Pune none of these exist, so any "forecast" would be built on invented inputs. It also assumes Birmingham demand patterns, which were never validated for Pune.
+
+**43. How did you make sure the Pune data isn't made up?**
+Every fact cites a dated source in `sources.json` (official documents, news, Wikipedia, directories). Empty fields mean the sources are silent. The loader rejects any fact without a source, any coordinate outside Pune and any unknown status, and a test enforces this. Wikipedia coordinates were cross-checked against nearby stations: Kothrud, Aundh and Pune Camp were wrong by kilometres and were rejected.
+
+**44. What does "announced – opening not confirmed" mean for the metro lots?**
+Pune Metro announced parking at nine stations in Feb 2024 with published rates. No later report confirms they opened. A Dec 2024 report says most stations lacked parking, and a Sep 2025 report says none will be provided in the PCMC area. So PCMC and Swargate are "conflicting" and the rest "announced". The app ranks them low on evidence and tells the user to check.
+
+**45. Explain the recommendation score.**
+Score = 0.6 × proximity + 0.4 × evidence. Proximity = 1 − straight-line distance ÷ radius. Evidence is a fixed weight per status (0.90 reported … 0.20 conflicting). Exclusions are only for known reasons: closed or restricted, a vehicle the sources don't list, a published price above budget, or beyond the radius. Unknowns are listed, not penalised as zero. The weights are a transparent design choice, not learned; with no outcome data (whether people found a space) they can't be learned.
+
+**46. Why straight-line distance?**
+Driving distance needs a routing service (an API key or an external server); the app must run locally with no paid services. Straight-line distance is labelled as such everywhere, and the Directions button hands off to Google Maps for real routing.
+
+**47. What is the time-of-day uncertainty range?**
+Split-conformal prediction. I take the out-of-fold walk-forward residuals (each from a model trained only on earlier weeks) and use the ⌈(n+1)·0.9⌉/n quantile of their absolute values as the half-width, separately for four bands of forecast time. One global width covered 86% of 11:00–12:30 outcomes and 93% of 13:00–14:30 outcomes. Band widths brought every band to 87.6–90.9% at 60 minutes, with 89.8% overall.
+
+**48. How does "test on your own data" avoid misleading users?**
+It trains nothing on the upload. It runs a park-agnostic model, measures its error on the uploaded counts against persistence, and shows forecasts only if the model wins. On a Birmingham car park it never saw, it scored 1.75 pp vs 5.28 pp for persistence at 60 minutes. I'm careful to say that this car park shares the training period and city, so a different city would be harder. That's exactly why the check runs on the user's own data.
+
+**49. How does the dark/light mode work?**
+Both palettes are defined in `.streamlit/config.toml` (`[theme.light]`, `[theme.dark]`), so Streamlit's built-in theme switcher (⋮ → Settings → Theme) changes every widget, table, alert and chart, and the browser remembers it. Charts use Streamlit's Plotly theme; the map picks a light or dark basemap from `st.context.theme`. I didn't build a separate CSS toggle because Streamlit has no supported API to change the theme from Python, and CSS hacks break between versions.
+
+**50. What would you need to make ParkSmart a real Pune product?**
+An authorised occupancy feed (PMC, or Pune Metro's occupancy boards), validation of the transfer model on it, verified opening hours and tariffs for more facilities, routing, and deployment. The code already has the upload/evaluation path and the facility schema to plug these in.

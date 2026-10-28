@@ -1,5 +1,22 @@
 # ParkSmart — presentation outline, speaker script and demo plan
 
+> **ParkSmart 2.0 update.** The talk below is still valid for the ML part. Add the Pune slides and demo steps in the next section; they replace the old 3-minute demo.
+
+## ParkSmart 2.0 additions (insert after slide 3; demo replaces slide 8)
+
+**New slide 3b — "Pune: what data exists" (1 min).** "I wanted this for Pune. I searched PMC open data, data.gov.in and news: there is no public occupancy data for any Pune car park. So I split the problem. For Pune, ParkSmart documents what can be verified: 19 facilities, each with a dated source and an evidence label. For forecasting, I built and tested the model where data exists, Birmingham. A transfer check decides when it may be used on Pune counts."
+
+**Demo (4 min):**
+1. *Overview*: map coloured by evidence, not occupancy; "what's live, historical, missing" panel. Switch to dark mode (⋮ → Settings → Theme).
+2. *Find parking*: FC Road, car, 2 h → ranked options with score breakdown and ₹ cost; note the FC Road pay-and-park pilot; open *How the ranking works*.
+3. *Explore*: Airport multi-level car park → capacity, sources, "Occupancy forecast: not available".
+4. *City insights*: metro parking announced (9) vs confirmed (0).
+5. *Occupancy forecast*: Broad Street replay (19 free, actual +0.4 pp), then *Test on your own data* → sample → model 1.75 pp vs persistence 5.28 pp → forecasts shown only because it wins.
+6. *Model performance*: comparison chart and time-of-day coverage chart.
+
+**Backup:** if the venue has no internet, turn off **Street map** in the sidebar (fonts are bundled). If the app fails, use `reports/screenshots/*_light.png` / `*_dark.png` and run `pytest -q` (40 passed).
+
+
 Target length: **10 minutes talk + 3 minutes live demo**, then viva. All numbers below come from `outputs/metrics/` and match the report and the app.
 
 | # | Slide | Time | Visual |

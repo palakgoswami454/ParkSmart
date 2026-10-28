@@ -1,9 +1,96 @@
+# ParkSmart design system.
+# Light and dark palettes are both defined here, so Streamlit's own theme
+# switcher (⋮ menu → Settings → Theme: Light / Dark / System) changes the whole
+# app, including charts, tables, widgets and alerts. The choice is remembered
+# by the browser. No custom CSS is needed, so nothing breaks across versions.
+#
+# Type: Barlow (body) and Barlow Semi Condensed (headings) — a grotesk family
+# drawn from the lettering of public road infrastructure. The font files are
+# bundled in static/fonts (SIL OFL), so the app works offline.
+
 [theme]
-base = "light"
-primaryColor = "#0B4F9C"
+font = "Barlow, sans-serif"
+headingFont = "Barlow Semi Condensed, Barlow, sans-serif"
+headingFontWeights = [700, 600, 600, 600, 600, 600]
+headingFontSizes = ["2.4rem", "1.7rem", "1.3rem", "1.1rem", "1rem", "0.9rem"]
+baseFontSize = 15
+baseRadius = "0.6rem"
+buttonRadius = "0.5rem"
+showSidebarBorder = true
+showWidgetBorder = true
+metricValueFontSize = "1.9rem"
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-latin-400-normal.woff2"
+weight = 400
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-latin-500-normal.woff2"
+weight = 500
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-latin-600-normal.woff2"
+weight = 600
+
+[[theme.fontFaces]]
+family = "Barlow"
+url = "app/static/fonts/barlow-latin-700-normal.woff2"
+weight = 700
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-latin-500-normal.woff2"
+weight = 500
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-latin-600-normal.woff2"
+weight = 600
+
+[[theme.fontFaces]]
+family = "Barlow Semi Condensed"
+url = "app/static/fonts/barlow-semi-condensed-latin-700-normal.woff2"
+weight = 700
+
+[theme.light]
+primaryColor = "#1A5CD8"
 backgroundColor = "#FFFFFF"
-secondaryBackgroundColor = "#F1F4F7"
-textColor = "#22272B"
+secondaryBackgroundColor = "#F2F5F9"
+textColor = "#10203A"
+borderColor = "#DCE3EC"
+linkColor = "#1A5CD8"
+greenColor = "#0F9F6E"
+orangeColor = "#D98A0B"
+redColor = "#D93D42"
+blueColor = "#1A5CD8"
+chartCategoricalColors = ["#1A5CD8", "#0F9F6E", "#D98A0B", "#7A8AA3", "#D93D42", "#5B4FD6"]
+chartSequentialColors = ["#EAF1FD", "#D3E2FB", "#B3CCF7", "#8EB2F2", "#6896EC", "#4479E3", "#2C63D6", "#1F50B8", "#173F93", "#10306F"]
+
+[theme.light.sidebar]
+backgroundColor = "#F2F5F9"
+
+[theme.dark]
+primaryColor = "#4CC3FF"
+backgroundColor = "#0B1424"
+secondaryBackgroundColor = "#121E33"
+textColor = "#E4EBF5"
+borderColor = "#22324D"
+linkColor = "#4CC3FF"
+greenColor = "#2DD4A0"
+orangeColor = "#F5A524"
+redColor = "#F2555A"
+blueColor = "#4CC3FF"
+chartCategoricalColors = ["#4CC3FF", "#2DD4A0", "#F5A524", "#8FA3C2", "#F2555A", "#A193FF"]
+chartSequentialColors = ["#10213A", "#12304F", "#134065", "#14517C", "#156393", "#1A77AB", "#2B8DC2", "#45A5D8", "#6BBDEA", "#9AD6F7"]
+
+[theme.dark.sidebar]
+backgroundColor = "#0E192C"
+
+[server]
+enableStaticServing = true
 
 [browser]
 gatherUsageStats = false
