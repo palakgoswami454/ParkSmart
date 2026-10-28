@@ -104,7 +104,7 @@ def quality_report(df: pd.DataFrame) -> dict:
 # ----------------------------------------------------------------------------
 # Cleaning and regularisation onto the 30-minute grid
 # ----------------------------------------------------------------------------
-def clean(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+def clean(df: pd.DataFrame, min_obs: int = C.MIN_OBSERVATIONS_PER_PARK) -> tuple[pd.DataFrame, dict]:
     """Remove duplicates, fix impossible values and drop sparse car parks."""
     log: dict = {"rows_in": int(len(df))}
     df = df.drop_duplicates().copy()
@@ -122,7 +122,7 @@ def clean(df: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     df["occupancy_rate"] = df["occupancy_rate_raw"].clip(0, 1)
 
     counts = df["SystemCodeNumber"].value_counts()
-    sparse = sorted(counts[counts < C.MIN_OBSERVATIONS_PER_PARK].index.tolist())
+    sparse = sorted(counts[counts < min_obs].index.tolist())
     log["sparse_parks_dropped"] = {p: int(counts[p]) for p in sparse}
     df = df[~df["SystemCodeNumber"].isin(sparse)]
     log["rows_out"] = int(len(df))

@@ -26,6 +26,7 @@ from sklearn.model_selection import ParameterGrid
 
 from src import config as C
 from src.data_preprocessing import load_grid
+from src.intervals import halfwidths
 from src.feature_engineering import (FEATURE_DESCRIPTIONS, FEATURES, build_features, park_codes,
                                      split_by_date, walk_forward_folds)
 from src.models import ThresholdedRegressorClassifier, classification_candidates, regression_candidates
@@ -140,6 +141,10 @@ def run_horizon(grid: pd.DataFrame, horizon: int) -> dict:
     q80 = float(np.quantile(resid, 0.80))
     out["interval"] = {"method": "absolute walk-forward residual quantile (split-conformal style)",
                        "n_residuals": int(len(resid)), "halfwidth_90": round(q90, 5), "halfwidth_80": round(q80, 5)}
+    # Time-of-day ("Mondrian") version of the same range: one width per target-time band.
+    interval_table = halfwidths((tv["target_rate"] - sel_oof).abs(), tv["target_hour"])
+    out["interval"]["by_band_90"] = {k: round(v["halfwidth"], 5) for k, v in interval_table["by_band"].items()}
+    out["interval"]["conformal_global_90"] = round(interval_table["global"], 5)
 
     # ----------------------- Classification -------------------------------
     for name, (est, grid_, why) in classification_candidates().items():
@@ -192,13 +197,12 @@ def run_horizon(grid: pd.DataFrame, horizon: int) -> dict:
         "classifier_name": clf_sel, "classifier": fitted_clf[clf_sel],
         "features": FEATURES, "feature_descriptions": FEATURE_DESCRIPTIONS,
         "park_codes": codes, "capacities": caps,
-        "interval_halfwidth_90": q90, "interval_halfwidth_80": q80,
+        "interval_halfwidth_90": q90, "interval_halfwidth_80": q80, "interval_table_90": interval_table,
         "status_bins": C.STATUS_BINS, "status_labels": C.STATUS_LABELS,
         "trained_on": out["date_ranges"]["train"][0] + " .. " + out["date_ranges"]["val"][1],
         "sklearn_version": __import__("sklearn").__version__,
     }
     joblib.dump(bundle, C.MODELS_DIR / f"parksmart_h{horizon}.joblib", compress=3)
-    # Also keep every fitted regressor for the unseen-period/feature-importance analysis.
     return out
 
 

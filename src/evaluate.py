@@ -22,6 +22,7 @@ from src import config as C
 from src import plot_style as S
 from src.data_preprocessing import load_grid
 from src.feature_engineering import FEATURES, build_features, park_codes, split_by_date
+from src.intervals import coverage_report, width_for
 from src.models import regression_candidates
 
 S.apply()
@@ -99,6 +100,12 @@ def evaluate_horizon(h: int, summary: dict, grid: pd.DataFrame) -> dict:
     hw = s["interval"]["halfwidth_90"]
     res["interval_test_coverage_90"] = float(np.mean(tp["abs_err"] <= hw))
     res["interval_halfwidth_90_pp"] = hw * 100
+    table = joblib.load(C.MODELS_DIR / f"parksmart_h{h}.joblib").get("interval_table_90")
+    if table:
+        res["interval_band_report"] = coverage_report(y, pred, tp["target_hour"], table)
+        tp["hw"] = width_for(tp["target_hour"], table)
+    else:
+        tp["hw"] = hw
 
     # ---------------- Segment analysis -----------------------------------
     peak = tp["target_hour"].between(*PEAK_HOURS)
@@ -204,8 +211,8 @@ def evaluate_horizon(h: int, summary: dict, grid: pd.DataFrame) -> dict:
     ax.plot(th, exd["target_rate"] * 100, color=S.INK, lw=2.2, marker="o", ms=4, label="Actual")
     ax.plot(th, exd["reg::Persistence (baseline)"] * 100, color=S.MUTED, ls="--", label="Persistence")
     ax.plot(th, exd["pred"] * 100, color=S.ACCENT, lw=2, marker="s", ms=4, label=f"{sel_r}")
-    ax.fill_between(th, (exd["pred"] - hw).clip(0) * 100, (exd["pred"] + hw).clip(upper=1) * 100,
-                    color=S.ACCENT, alpha=0.15, label="90% interval")
+    ax.fill_between(th, (exd["pred"] - exd["hw"]).clip(0) * 100, (exd["pred"] + exd["hw"]).clip(upper=1) * 100,
+                    color=S.ACCENT, alpha=0.15, label="90% range (by time of day)")
     ax.set(title=f"{ex_park}, {pd.Timestamp(ex_day).date()} - forecasts made {h} min earlier",
            xlabel="Time of day (h)", ylabel="Occupancy (%)")
     ax.legend(fontsize=8)
@@ -297,6 +304,8 @@ def main():
         print(pd.DataFrame(out[h]["classification_table"])[["Model", "accuracy", "macro_F1", "FULL_recall",
                                                              "FULL_precision", "Walk-forward macro F1"]].to_string(index=False))
         print("interval coverage", round(out[h]["interval_test_coverage_90"], 3), "segments", json.dumps(out[h]["segments"]))
+        if "interval_band_report" in out[h]:
+            print("band intervals", json.dumps(out[h]["interval_band_report"], indent=1))
     print(json.dumps(out.get("unseen_park_experiment"), indent=2))
 
 

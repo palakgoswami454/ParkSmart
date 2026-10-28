@@ -164,6 +164,54 @@ INTERP3 = """## Conclusions from the experiments
 """
 nb3.append(md(INTERP3))
 
+nb4 = [
+    md("# 04 · Pune directory, recommendations and model transfer\n\n"
+       "ParkSmart 2.0 focuses on Pune. No public Pune occupancy data exists, so this notebook (1) audits the hand-curated, "
+       "sourced Pune facility directory, (2) shows the transparent recommendation logic, and (3) evaluates whether the "
+       "Birmingham-trained model *transfers* to a car park it has never seen, which is the evidence needed before any "
+       "Pune forecast could be shown."),
+    code(SETUP),
+    md("## 1. The Pune directory and its evidence"),
+    code("from src.data_loader import load_pune, summary_counts, STATUS\nd = load_pune()\nsummary_counts(d)"),
+    code("d.facilities[['name','locality','type_label','status_label','vehicles_label','has_tariff','has_location','best_source_kind']]"),
+    code("d.facilities['status_label'].value_counts()"),
+    code("import pandas as pd\npd.Series({k: v['kind'] for k, v in d.sources.items()}).value_counts()"),
+    md("Every row cites at least one dated source; `null` fields mean the sources are silent. Status labels describe the "
+       "evidence on the source date. Nine of the 19 facilities are metro-station lots announced in Feb 2024 whose "
+       "opening was never confirmed, two of them contradicted by later reports. That is why the app treats them as "
+       "*worth checking* and never as available."),
+    md("### Coordinate sanity check\nEvery mapped facility should lie within a few km of a cited destination. "
+       "Wikipedia locality coordinates for Kothrud, Aundh and Pune Camp failed this kind of check and were not used."),
+    code("from src.location_services import haversine_km\ndests = d.destinations.dropna(subset=['lat'])\n"
+         "rows = []\nfor _, f in d.facilities[d.facilities.has_location].iterrows():\n"
+         "    dist, name = min((haversine_km(f.lat, f.lon, x.lat, x.lon), x['name']) for _, x in dests.iterrows())\n"
+         "    rows.append({'facility': f['name'], 'nearest destination': name, 'km': round(dist, 2)})\npd.DataFrame(rows)"),
+    md("## 2. Recommendations\nScore = 0.6 × proximity + 0.4 × evidence; hard filters only for known reasons."),
+    code("from src.recommendations import recommend\ndest = d.destinations.set_index('id').loc['fc-road'].to_dict() | {'id': 'fc-road'}\n"
+         "rec = recommend(d, dest, 'car', hours=3, budget=None, radius_km=5)\n"
+         "rec.ranked[['name','distance_km','proximity','evidence','score','cost','missing']].round(2)"),
+    code("rec.not_suitable[['name','distance_km','reason']].round(2).head(10)"),
+    md("Budget and vehicle filters exclude only facilities where the *known* price or vehicle list rules them out:"),
+    code("r = recommend(d, d.destinations.set_index('id').loc['shivajinagar'].to_dict() | {'id': 'shivajinagar'}, 'car', 3, budget=40)\n"
+         "r.not_suitable[['name','reason']].head(6)"),
+    md("## 3. Uncertainty by time of day\nSplit-conformal ranges from walk-forward residuals, one width per band of the "
+       "forecast time."),
+    code("ev = json.loads((C.METRICS_DIR / 'evaluation_summary.json').read_text())\n"
+         "pd.DataFrame(ev['60']['interval_band_report']['by_band']).T.round(3)"),
+    md("A single width under-covers the morning fill-up and over-covers the afternoon; band widths bring every band "
+       "closer to the 90% target while keeping overall coverage near 90%."),
+    md("## 4. Does the model transfer to an unseen car park?\nA park-agnostic model (ID hidden) is trained on 27 car "
+       "parks and tested on the 28th, exactly as an uploaded Pune file would be processed."),
+    code("t = json.loads((C.METRICS_DIR / 'transfer_summary.json').read_text())\npd.DataFrame({h: t[h] for h in ('30', '60')})"),
+    code("from src.transfer import evaluate_upload, SAMPLE_CSV\nres = evaluate_upload(pd.read_csv(SAMPLE_CSV), 60)\n"
+         "{'model_MAE_pp': res.model_mae_pp, 'persistence_MAE_pp': res.persistence_mae_pp, 'coverage': res.coverage, "
+         "'beats_persistence': res.beats_persistence, 'rows_scored': res.n_scored}"),
+    md("**Interpretation.** On a car park it never saw, the park-agnostic model is about three times more accurate than "
+       "persistence. This supports *testing* it on Pune counts, and nothing more: the held-out car park shares the "
+       "training period and city, which makes it easier than Pune in a different year. The upload tool therefore "
+       "measures error on the user's own data and only shows forecasts if the model beats persistence there."),
+]
+
 
 def build(name, cells):
     nb = nbf.v4.new_notebook()
@@ -174,8 +222,12 @@ def build(name, cells):
     print("executed", NB / name)
 
 
+ALL = {"01_data_understanding.ipynb": nb1, "02_preprocessing_and_eda.ipynb": nb2,
+       "03_model_training_and_evaluation.ipynb": nb3, "04_pune_directory_and_transfer.ipynb": nb4}
+
 if __name__ == "__main__":
+    import sys
     NB.mkdir(exist_ok=True)
-    build("01_data_understanding.ipynb", nb1)
-    build("02_preprocessing_and_eda.ipynb", nb2)
-    build("03_model_training_and_evaluation.ipynb", nb3)
+    wanted = sys.argv[1:] or list(ALL)  # e.g. python scripts/build_notebooks.py 04_pune_directory_and_transfer.ipynb
+    for name in wanted:
+        build(name, ALL[name])

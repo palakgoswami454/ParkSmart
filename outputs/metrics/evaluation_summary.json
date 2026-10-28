@@ -237,6 +237,38 @@
     ],
     "interval_test_coverage_90": 0.9016798418972332,
     "interval_halfwidth_90_pp": 2.87,
+    "interval_band_report": {
+      "global_coverage": 0.9018445322793149,
+      "band_coverage": 0.9018445322793149,
+      "global_halfwidth_pp": 2.8720928657171463,
+      "mean_band_halfwidth_pp": 2.871504329836686,
+      "by_band": {
+        "08:30\u201310:30": {
+          "n": 1739,
+          "global_coverage": 0.8729154686601495,
+          "band_coverage": 0.8913168487636572,
+          "band_halfwidth_pp": 3.1190396886506324
+        },
+        "11:00\u201312:30": {
+          "n": 1408,
+          "global_coverage": 0.8892045454545454,
+          "band_coverage": 0.8941761363636364,
+          "band_halfwidth_pp": 2.9313023028982474
+        },
+        "13:00\u201314:30": {
+          "n": 1432,
+          "global_coverage": 0.9343575418994413,
+          "band_coverage": 0.9120111731843575,
+          "band_halfwidth_pp": 2.5616395867375408
+        },
+        "15:00\u201316:30": {
+          "n": 1493,
+          "global_coverage": 0.9162759544541192,
+          "band_coverage": 0.9115874079035499,
+          "band_halfwidth_pp": 2.8239937987381225
+        }
+      }
+    },
     "segments": {
       "peak (12:00-15:00)": {
         "n": 2536,
@@ -469,7 +501,7 @@
         "std_pp": 0.0
       }
     ],
-    "permutation_seconds": 10.0,
+    "permutation_seconds": 9.4,
     "selected_regressor": "HistGradientBoosting",
     "selected_classifier": "Thresholded HistGradientBoosting"
   },
@@ -711,6 +743,38 @@
     ],
     "interval_test_coverage_90": 0.9005053145147238,
     "interval_halfwidth_90_pp": 4.4990000000000006,
+    "interval_band_report": {
+      "global_coverage": 0.9006795608991114,
+      "band_coverage": 0.8975431259801359,
+      "global_halfwidth_pp": 4.502011852987015,
+      "mean_band_halfwidth_pp": 4.500995331611608,
+      "by_band": {
+        "08:30\u201310:30": {
+          "n": 1409,
+          "global_coverage": 0.8814762242725337,
+          "band_coverage": 0.9091554293825408,
+          "band_halfwidth_pp": 5.190410527620449
+        },
+        "11:00\u201312:30": {
+          "n": 1406,
+          "global_coverage": 0.864153627311522,
+          "band_coverage": 0.8755334281650071,
+          "band_halfwidth_pp": 4.720629682192412
+        },
+        "13:00\u201314:30": {
+          "n": 1433,
+          "global_coverage": 0.9295184926727146,
+          "band_coverage": 0.8995115143056525,
+          "band_halfwidth_pp": 3.9939975817192885
+        },
+        "15:00\u201316:30": {
+          "n": 1491,
+          "global_coverage": 0.9255533199195171,
+          "band_coverage": 0.9054325955734407,
+          "band_halfwidth_pp": 4.129657885268633
+        }
+      }
+    },
     "segments": {
       "peak (12:00-15:00)": {
         "n": 2508,
@@ -943,7 +1007,7 @@
         "std_pp": 0.0
       }
     ],
-    "permutation_seconds": 9.0,
+    "permutation_seconds": 9.6,
     "selected_regressor": "HistGradientBoosting",
     "selected_classifier": "Thresholded HistGradientBoosting"
   },

@@ -1150,7 +1150,14 @@
       "method": "absolute walk-forward residual quantile (split-conformal style)",
       "n_residuals": 12049,
       "halfwidth_90": 0.04499,
-      "halfwidth_80": 0.03059
+      "halfwidth_80": 0.03059,
+      "by_band_90": {
+        "08:30\u201310:30": 0.0519,
+        "11:00\u201312:30": 0.04721,
+        "13:00\u201314:30": 0.03994,
+        "15:00\u201316:30": 0.0413
+      },
+      "conformal_global_90": 0.04502
     },
     "selected_classifier": "Thresholded HistGradientBoosting"
   },
@@ -2305,7 +2312,14 @@
       "method": "absolute walk-forward residual quantile (split-conformal style)",
       "n_residuals": 12778,
       "halfwidth_90": 0.0287,
-      "halfwidth_80": 0.0196
+      "halfwidth_80": 0.0196,
+      "by_band_90": {
+        "08:30\u201310:30": 0.03119,
+        "11:00\u201312:30": 0.02931,
+        "13:00\u201314:30": 0.02562,
+        "15:00\u201316:30": 0.02824
+      },
+      "conformal_global_90": 0.02872
     },
     "selected_classifier": "Thresholded HistGradientBoosting"
   }

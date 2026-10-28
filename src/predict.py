@@ -34,6 +34,16 @@ def load_bundle(horizon: int = C.PRIMARY_HORIZON) -> dict:
     return joblib.load(path)
 
 
+def interval_halfwidth(bundle: dict, target_hour) -> np.ndarray:
+    """90% range half-width for each forecast: per time-of-day band when the
+    bundle has a band table (see src/intervals.py), else the single global width."""
+    table = bundle.get("interval_table_90")
+    if table:
+        from src.intervals import width_for
+        return width_for(target_hour, table)
+    return np.full(len(target_hour), bundle["interval_halfwidth_90"], dtype=float)
+
+
 def inference_table(grid: pd.DataFrame, bundle: dict) -> pd.DataFrame:
     """Features for every origin that has a current reading, with predictions.
 
@@ -46,9 +56,9 @@ def inference_table(grid: pd.DataFrame, bundle: dict) -> pd.DataFrame:
     feats["pred_rate"] = rate
     feats["pred_status_from_rate"] = C.status_from_rate(rate)
     feats["pred_status"] = bundle["classifier"].predict(feats[FEATURES])
-    hw = bundle["interval_halfwidth_90"]
-    feats["pred_low"] = np.clip(rate - hw, 0, 1)
-    feats["pred_high"] = np.clip(rate + hw, 0, 1)
+    feats["interval_halfwidth"] = interval_halfwidth(bundle, feats["target_hour"])
+    feats["pred_low"] = np.clip(rate - feats["interval_halfwidth"], 0, 1)
+    feats["pred_high"] = np.clip(rate + feats["interval_halfwidth"], 0, 1)
     feats["pred_occupied"] = np.round(rate * feats["capacity"]).astype(int)
     feats["pred_available"] = np.maximum(0, feats["capacity"] - feats["pred_occupied"])
     actual = grid[["SystemCodeNumber", "slot_time", "occupancy_rate"]].rename(

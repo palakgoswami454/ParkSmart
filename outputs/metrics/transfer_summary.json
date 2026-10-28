@@ -1,0 +1,26 @@
+{
+  "30": {
+    "model": "HistGradientBoosting (park-agnostic)",
+    "holdout_park": "Others-CCCPS8",
+    "holdout_rows": 1221,
+    "holdout_MAE_pp": 1.1039757637080168,
+    "holdout_persistence_MAE_pp": 2.685789902128783,
+    "holdout_interval_coverage": 0.9696969696969697,
+    "park_cv_interval_global_pp": 3.3084317721803536
+  },
+  "60": {
+    "model": "HistGradientBoosting (park-agnostic)",
+    "holdout_park": "Others-CCCPS8",
+    "holdout_rows": 1150,
+    "holdout_MAE_pp": 1.7464840196700666,
+    "holdout_persistence_MAE_pp": 5.283628231270144,
+    "holdout_interval_coverage": 0.9765217391304348,
+    "park_cv_interval_global_pp": 5.630327350873509
+  },
+  "sample_upload_check": {
+    "model_MAE_pp": 1.7464840196700662,
+    "persistence_MAE_pp": 5.283628231270144,
+    "coverage": 0.9765217391304348,
+    "rows_scored": 1150
+  }
+}
